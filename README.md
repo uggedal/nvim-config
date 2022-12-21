@@ -8,7 +8,20 @@ Neovim config in lua.
 - [languages](lua/languages.lua): spaces vs tab indent setup, text wrapping,
   line numbering and conceal for different languages.
 - [keymaps](lua/keymaps.lua): definition and re-definition of built-in
-  mappings.
+  mappings:
+  - `<C-h/j/k/l>`: directional move to split.
+  - `<C-l>`: clear screen (original) and clear search highlight.
+  - `,cp`: paste from system clipboard.
+  - `,cy`: yank to system clipboard (visual mode).
+  - `,p`: previous buffer.
+  - `,n`: next buffer.
+  - `,d`: delete buffer.
+  - `,i`: toggle paste mode.
+  - `,gc`: git commit and sync.
+  - `,e`: edit in working directory of current file.
+  - `[d`: previous diagnostic.
+  - `]d`: next diagnostic.
+  - `gl`: view diagnostic.
 
 ## Custom plugins
 
@@ -31,7 +44,7 @@ Neovim config in lua.
 - `nvim-yati` for better `treesitter` indent (especially Python).
 - `treesitter/playground` for debugging tree-sitter queries.
 - [telescope](lua/plugins/telescope.lua) with `telescope-fzf-native` for
-  finding files (`<c-p>`) and live grep (`<c-g`). Also used for git operations:
+  finding files (`<C-p>`) and live grep (`<C-g`). Also used for git operations:
   - `,gl`: list commits of current file.
   - `,gL`: list all commits.
   - `,gB`: list git branches.
