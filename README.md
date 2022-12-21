@@ -2,6 +2,14 @@
 
 Neovim config in lua.
 
+## Configuration
+
+- [settings](lua/settings.lua): tweak built-in settings.
+- [languages](lua/languages.lua): spaces vs tab indent setup, text wrapping,
+  line numbering and conceal for different languages.
+- [keymaps](lua/keymaps.lua): definition and re-definition of built-in
+  mappings.
+
 ## Custom plugins
 
 - [gh](lua/gh.lua): custom GitHub based color scheme (slight differences from
