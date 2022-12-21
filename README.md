@@ -6,8 +6,7 @@ Neovim config in lua.
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
 - `journal`:
-  - Calendar (use/reuse
-    [neorg implementation](https://github.com/nvim-neorg/neorg/pull/505))
+  - Calendar (use/reuse [neorg implementation](neorg-calendar).
 
 ## Configuration
 
@@ -88,3 +87,4 @@ Neovim config in lua.
   `path`, `lsp` and `buffer` sources.
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
+[neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
