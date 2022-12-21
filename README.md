@@ -5,6 +5,9 @@ Neovim config in lua.
 ## TODO
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
+- `journal`:
+  - Calendar (use/reuse
+    [neorg implementation](https://github.com/nvim-neorg/neorg/pull/505))
 
 ## Configuration
 
