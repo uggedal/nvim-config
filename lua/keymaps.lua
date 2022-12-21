@@ -1,3 +1,5 @@
+local req = require('util').req
+
 -- Disable movement with cursor keys:
 for _, k in ipairs({ 'up', 'down', 'left', 'right' }) do
   vim.keymap.set('n', '<' .. k .. '>', '<nop>')
@@ -34,10 +36,7 @@ vim.keymap.set('n', '<c-l>', ':nohlsearch<cr><c-l>', { silent = true })
 
 vim.g.mapleader = ','
 
-
-local has_wk, wk = pcall(require, 'which-key')
-
-if has_wk then
+req('which-key', function(wk)
   wk.register({
     c = {
       name = 'clipboard',
