@@ -2,13 +2,6 @@
 
 Neovim config in lua.
 
-## TODO
-
-- [ ] Find alternative to `buftabline` as it's abandoned upstream.
-- `journal`:
-  - Calendar (use/reuse [neorg implementation](neorg-calendar).
-- [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
-
 ## Configuration
 
 - [settings](lua/settings.lua): tweak built-in settings.
@@ -86,6 +79,13 @@ Neovim config in lua.
   - Django/Jinja2 formatting: `djhtml`.
 - [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for
   `path`, `lsp` and `buffer` sources.
+
+## TODO
+
+- [ ] Find alternative to `buftabline` as it's abandoned upstream.
+- `journal`:
+  - Calendar (use/reuse [neorg implementation](neorg-calendar).
+- [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
