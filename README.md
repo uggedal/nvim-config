@@ -2,6 +2,10 @@
 
 Neovim config in lua.
 
+## TODO
+
+- [ ] Find alternative to `buftabline` as it's abandoned upstream.
+
 ## Configuration
 
 - [settings](lua/settings.lua): tweak built-in settings.
