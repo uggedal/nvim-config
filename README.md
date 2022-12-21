@@ -88,8 +88,16 @@ Neovim config in lua.
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 - [ ] Create [clipboard-image][clipboard-image] alternative using
       `screencapture -i %s`.
+- [ ] Test [nvim-surround][]
+- [ ] Test [vim-illuminate][]
+- [ ] Test [nvim-treesitter-textobjects][]
+- [ ] Test [nvim-treesitter-textsubjects][]
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
 [ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
+[nvim-surround]: https://github.com/kylechui/nvim-surround
+[vim-illuminate]: https://github.com/RRethy/vim-illuminate
+[nvim-treesitter-textobjects]: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+[nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
