@@ -89,4 +89,4 @@ Neovim config in lua.
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
-[ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f08ece6517a7045564e225543af793c4ef
+[ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
