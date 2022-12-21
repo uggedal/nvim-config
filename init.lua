@@ -1,0 +1,7 @@
+require('settings')
+require('colorscheme')
+require('languages')
+require('plugins')
+require('keymaps')
+require('journal')
+require('todo')
