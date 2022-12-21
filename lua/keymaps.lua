@@ -34,26 +34,6 @@ vim.keymap.set('n', '<c-l>', ':nohlsearch<cr><c-l>', { silent = true })
 
 vim.g.mapleader = ','
 
-local has_tele_bultin, tele_builtin = pcall(require, 'telescope.builtin')
-
-if has_tele_bultin then
-  vim.keymap.set('n', '<c-p>', function()
-    tele_builtin.find_files({
-      find_command = {
-        'rg',
-        '--color',
-        'never',
-        '--files',
-        '--ignore',
-        '--hidden',
-        '-g',
-        '!.git',
-      },
-    })
-  end)
-
-  vim.keymap.set('n', '<c-g>', tele_builtin.live_grep)
-end
 
 local has_wk, wk = pcall(require, 'which-key')
 
@@ -77,9 +57,7 @@ if has_wk then
       },
     },
   }, { prefix = '<leader>', mode = 'v' })
-end
 
-if has_wk and has_tele_bultin then
   wk.register({
     p = {
       ':bp<CR>',
@@ -105,27 +83,9 @@ if has_wk and has_tele_bultin then
         end,
         'git commit and sync',
       },
-      l = {
-        tele_builtin.git_bcommits,
-        'git buffer commits',
-      },
-      L = {
-        tele_builtin.git_commits,
-        'git commits',
-      },
-      B = {
-        tele_builtin.git_branches,
-        'git branches',
-      },
-      s = {
-        tele_builtin.git_status,
-        'git status',
-      },
     },
   }, { prefix = '<leader>' })
-end
 
-if has_wk then
   wk.register({
     e = {
       ':e <C-R>=expand("%:p:h") . "/"<CR>',
