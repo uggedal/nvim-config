@@ -113,21 +113,4 @@ if has_wk then
       },
     },
   })
-end
-
-local has_btab_cmds, btab_cmds = pcall(require, 'buftabline.commands')
-
-if has_wk and has_btab_cmds then
-  local buftabline_maps = {}
-
-  for i = 1, 9 do
-    buftabline_maps[tostring(i)] = {
-      function()
-        btab_cmds.buftarget(i, 'buffer')
-      end,
-      'buffer ' .. i,
-    }
-  end
-
-  wk.register(buftabline_maps, { prefix = '<leader>' })
-end
+end)

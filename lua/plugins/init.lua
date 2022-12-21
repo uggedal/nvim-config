@@ -75,15 +75,7 @@ end)
 
 req('telescope')
 
-req('buftabline', function(buftabline)
-  buftabline.setup({
-    auto_hide = true,
-    go_to_maps = false,
-    hlgroup = {
-      normal = 'TabLine',
-    },
-  })
-end)
+req('buftabline')
 
 req('gitsigns')
 
