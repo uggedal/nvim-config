@@ -64,6 +64,7 @@ Neovim config in lua.
 - [mkdnflow](lua/plugins/mkdnflow.lua) with most modules disabled except for
   intelligent list continuation with `Enter` and todo state manipulation
   (`C-Space`).
+- `peek` for live markdown previews using `:PeekOpen` and `:PeekClose`.
 - [lsp](lua/plugins/lsp.lua) with mappings for:
   - `gd`: go to definition.
   - `gr`: rename.

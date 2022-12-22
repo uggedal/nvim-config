@@ -45,6 +45,7 @@ req('packer', function(packer)
       use('jghauser/mkdir.nvim')
 
       use('jakewvincent/mkdnflow.nvim')
+      use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
 
       use('neovim/nvim-lspconfig')
       use({
@@ -103,6 +104,14 @@ end)
 pcall(require, 'mkdir')
 
 req('mkdnflow')
+
+req('peek', function(peek)
+  peek.setup({
+    theme = 'light',
+  })
+  vim.api.nvim_create_user_command('PeekOpen', peek.open, {})
+  vim.api.nvim_create_user_command('PeekClose', peek.close, {})
+end)
 
 req('lspconfig')
 req('null-ls')
