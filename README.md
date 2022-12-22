@@ -83,7 +83,8 @@ Neovim config in lua.
 ## TODO
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
-- `journal`: create calendar (use/reuse [neorg implementation](neorg-calendar).
+- `journal`: create calendar (use/reuse
+  [neorg implementation](neorg-calendar)).
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 - [ ] Create [clipboard-image][clipboard-image] alternative using
       `screencapture -i %s`.
