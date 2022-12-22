@@ -84,7 +84,7 @@ Neovim config in lua.
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
 - `journal`: create calendar (use/reuse
-  [neorg implementation](neorg-calendar)).
+  - Potentially [cybu][cybu]. [neorg implementation](neorg-calendar)).
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 - [ ] Create [clipboard-image][clipboard-image] alternative using
       `screencapture -i %s`.
@@ -94,6 +94,7 @@ Neovim config in lua.
 - [ ] Test [nvim-treesitter-textsubjects][nvim-treesitter-textsubjects].
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
+[cybu]: https://github.com/ghillb/cybu.nvim
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
 [ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
