@@ -116,3 +116,10 @@ end)
 req('lspconfig')
 req('null-ls')
 req('cmp')
+
+-- Regenerate compiled loader file when changing this file:
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | PackerCompile',
+  pattern = 'lua/plugins/init.lua',
+  group = vim.api.nvim_create_augroup('Packer', {}),
+})
