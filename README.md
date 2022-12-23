@@ -83,6 +83,7 @@ Neovim config in lua.
 
 ## TODO
 
+- [ ] Test [lazy.nvim](https://github.com/folke/lazy.nvim).
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
 - `journal`: create calendar (use/reuse
   - Potentially [cybu][cybu]. [neorg implementation](neorg-calendar)).
