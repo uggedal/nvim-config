@@ -83,24 +83,33 @@ Neovim config in lua.
 
 ## TODO
 
-- [ ] Test [lazy.nvim](https://github.com/folke/lazy.nvim).
 - [ ] Find alternative to `buftabline` as it's abandoned upstream.
-- `journal`: create calendar (use/reuse
-  - Potentially [cybu][cybu]. [neorg implementation](neorg-calendar)).
+  - Potentially [cybu][]
+- [ ] Plugins to consider:
+  - [ ] `packer` to [lazy.nvim][]
+  - [ ] [telescope-frecency][]
+  - [ ] [telescope-undo][]
+  - [ ] [neogit][]
+  - [ ] [nvim-surround][]
+  - [ ] [vim-illuminate][].
+  - [ ] [nvim-treesitter-textobjects][].
+  - [ ] [nvim-treesitter-textsubjects][].
+- [ ] `journal`: create calendar (use/reuse
+      [neorg implementation](neorg-calendar)).
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 - [ ] Create [clipboard-image][clipboard-image] alternative using
       `screencapture -i %s`.
-- [ ] Test [nvim-surround][nvim-surround].
-- [ ] Test [vim-illuminate][vim-illuminate].
-- [ ] Test [nvim-treesitter-textobjects][nvim-treesitter-textobjects].
-- [ ] Test [nvim-treesitter-textsubjects][nvim-treesitter-textsubjects].
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
 [cybu]: https://github.com/ghillb/cybu.nvim
-[neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
-[ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
-[clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
+[lazy.nvim]: https://github.com/folke/lazy.nvim
+[telescope-frequency]: https://github.com/nvim-telescope/telescope-frecency.nvim
+[telescope-undo]: https://github.com/debugloop/telescope-undo.nvim
+[neogit]: https://github.com/TimUntersberger/neogit
 [nvim-surround]: https://github.com/kylechui/nvim-surround
 [vim-illuminate]: https://github.com/RRethy/vim-illuminate
 [nvim-treesitter-textobjects]: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
+[neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
+[ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
+[clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
