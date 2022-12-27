@@ -87,7 +87,7 @@ Neovim config in lua.
   - Potentially [cybu][]
 - [ ] Plugins to consider:
   - [ ] `packer` to [lazy.nvim][]
-  - [ ] [telescope-frecency][]
+  - [ ] [telescope-frequency][]
   - [ ] [telescope-undo][]
   - [ ] [neogit][]
   - [ ] [nvim-surround][]
