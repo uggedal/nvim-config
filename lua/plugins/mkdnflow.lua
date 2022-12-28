@@ -9,7 +9,7 @@ return {
         folds = false,
         links = false,
         paths = false,
-        tables = false,
+        tables = true,
       },
       to_do = {
         symbols = { ' ', '-', 'x' },
