@@ -6,33 +6,25 @@ return {
     req('cmp_nvim_lsp', function(cmp_lsp)
       local lsp_capabilities = cmp_lsp.default_capabilities()
 
-      local jedi_env = function(env)
-        return {
-          pylsp = {
-            plugins = {
-              jedi = {
-                environment = env,
-              },
-            },
-          },
-        }
-      end
-
       lspconfig.jedi_language_server.setup({
         on_attach = lsp_on_attach,
         capabilities = lsp_capabilities,
-        on_init = function(client)
-          local path = client.workspace_folders[1].name
 
-          if path == vim.fs.normalize('~/src/infra') then
-            client.config.settings =
-              jedi_env(vim.fs.normalize('~/.local/pipx/venvs/pyinfra'))
-          elseif vim.fn.isdirectory(path .. '/venv') ~= 0 then
-            client.config.settings = jedi_env('./venv')
+        on_new_config = function(new_config, root_dir)
+          local venv_dir = nil
+          if root_dir == vim.fs.normalize('~/src/infra') then
+            venv_dir = vim.fs.normalize('~/.local/pipx/venvs/pyinfra')
+          elseif vim.fn.isdirectory(root_dir .. '/venv') ~= 0 then
+            venv_dir = './venv'
           end
 
-          client.notify('workspace/didChangeConfiguration')
-          return true
+          if venv_dir ~= nil then
+            new_config.init_options = {
+              workspace = {
+                environmentPath = venv_dir .. '/bin/python3',
+              },
+            }
+          end
         end,
       })
 
