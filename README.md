@@ -96,6 +96,7 @@ Neovim config in lua.
   - [ ] [vim-illuminate][].
   - [ ] [nvim-treesitter-textobjects][].
   - [ ] [nvim-treesitter-textsubjects][].
+- [ ] Check [kickstart.nvim][]
 - [ ] `journal`: create calendar (use/reuse
       [neorg implementation](neorg-calendar)).
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
@@ -112,6 +113,7 @@ Neovim config in lua.
 [vim-illuminate]: https://github.com/RRethy/vim-illuminate
 [nvim-treesitter-textobjects]: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
+[kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
 [ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
