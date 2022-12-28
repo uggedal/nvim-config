@@ -89,6 +89,7 @@ Neovim config in lua.
   - [ ] `packer` to [lazy.nvim][]:
     - Use `keys` arg and `vim.keymap.set` with `desc`.
     - Use `which-key` only to describe groups.
+    - Update `infra` `upgrade.py` and `doc/`.
   - [ ] [telescope-frequency][]
   - [ ] [telescope-undo][]
   - [ ] [neogit][]
