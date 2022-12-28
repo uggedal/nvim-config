@@ -18,7 +18,7 @@ return {
         }
       end
 
-      lspconfig.pylsp.setup({
+      lspconfig.jedi_language_server.setup({
         on_attach = lsp_on_attach,
         capabilities = lsp_capabilities,
         on_init = function(client)
