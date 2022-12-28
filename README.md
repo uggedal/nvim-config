@@ -85,6 +85,7 @@ Neovim config in lua.
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][].
+  - Check `ruff` and `pylsp` overlap and disable in latter.
 - [ ] Plugins to consider:
   - [ ] `packer` to [lazy.nvim][]:
     - Use `keys` arg and `vim.keymap.set` with `desc`.
