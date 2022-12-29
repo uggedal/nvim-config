@@ -84,20 +84,20 @@ Neovim config in lua.
 ## TODO
 
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
-  - Potentially [cybu][].
+  - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
-  - [ ] `packer` to [lazy.nvim][]:
+  - [ ] `packer` to [lazy.nvim][lazy.nvim]:
     - Use `keys` arg and `vim.keymap.set` with `desc`.
     - Use `which-key` only to describe groups.
     - Update `infra` `upgrade.py` and `doc/`.
-  - [ ] [telescope-frequency][]
-  - [ ] [telescope-undo][]
-  - [ ] [neogit][]
-  - [ ] [nvim-surround][]
-  - [ ] [vim-illuminate][]
-  - [ ] [nvim-treesitter-textobjects][]
-  - [ ] [nvim-treesitter-textsubjects][]
-- [ ] Check [kickstart.nvim][].
+  - [ ] [telescope-frequency][telescope-frequency].
+  - [ ] [telescope-undo][telescope-undo].
+  - [ ] [neogit][neogit].
+  - [ ] [nvim-surround][nvim-surround].
+  - [ ] [vim-illuminate][vim-illuminate].
+  - [ ] [nvim-treesitter-textobjects][nvim-treesitter-textobjects].
+  - [ ] [nvim-treesitter-textsubjects][nvim-treesitter-textsubjects].
+- [ ] Check [kickstart.nvim][kickstart.nvim].
 - [ ] `journal`: create calendar (use/reuse
       [neorg implementation](neorg-calendar)).
 - [ ] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
