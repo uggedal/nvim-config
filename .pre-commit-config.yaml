@@ -8,3 +8,8 @@ repos:
         entry: stylua --check
         language: system
         types: [lua]
+      - id: markdown
+        name: markdown
+        entry: deno fmt --options-line-width 79 --check
+        language: system
+        types: [markdown]
