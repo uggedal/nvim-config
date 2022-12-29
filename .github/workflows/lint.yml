@@ -16,3 +16,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         version: latest
         args: --check .
+    - uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - name: Check markdown format
+      run: deno fmt --options-line-width 79 --check
