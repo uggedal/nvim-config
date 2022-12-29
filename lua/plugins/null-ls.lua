@@ -12,16 +12,7 @@ return {
       }),
 
       null_ls.builtins.formatting.stylua.with({
-        extra_args = {
-          '--column-width',
-          '80',
-          '--indent-type',
-          'Spaces',
-          '--indent-width',
-          2,
-          '--quote-style',
-          'AutoPreferSingle',
-        },
+        extra_args = { '--search-parent-directories' },
       }),
 
       null_ls.builtins.formatting.deno_fmt.with({
