@@ -5,6 +5,7 @@ return {
       null_ls.builtins.formatting.ruff,
       null_ls.builtins.diagnostics.ruff,
       null_ls.builtins.diagnostics.mypy.with({
+        command = 'venv/bin/mypy',
         condition = function(utils)
           return utils.root_has_file('venv/bin/mypy')
         end,
