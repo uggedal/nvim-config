@@ -52,10 +52,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   group = toggle_cursorline_group,
   pattern = '*',
 })
-vim.api.nvim_create_autocmd(
-  'InsertEnter',
-  { command = 'set cursorline', group = toggle_cursorline_group, pattern = '*' }
-)
+vim.api.nvim_create_autocmd('InsertEnter', {
+  command = 'set cursorline',
+  group = toggle_cursorline_group,
+  pattern = '*',
+})
 
 -- Spelling:
 vim.bo.spelllang = 'en'

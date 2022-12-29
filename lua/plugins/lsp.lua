@@ -14,7 +14,10 @@ local lsp_format_augroup = vim.api.nvim_create_augroup('LspFormat', {})
 return {
   lsp_on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then
-      vim.api.nvim_clear_autocmds({ group = lsp_format_augroup, buffer = bufnr })
+      vim.api.nvim_clear_autocmds({
+        group = lsp_format_augroup,
+        buffer = bufnr,
+      })
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function()
           lsp_format(bufnr)
