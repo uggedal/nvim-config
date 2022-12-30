@@ -91,6 +91,7 @@ Neovim config in lua.
     - [x] Use `which-key` only to describe groups.
     - [ ] Update `infra` `upgrade.py` and `doc/`.
     - [ ] Use lazy for todo/journal loading
+    - [ ] Fix colorscheme when installing plugins at startup
   - [ ] [telescope-frequency][telescope-frequency].
   - [ ] [telescope-undo][telescope-undo].
   - [ ] [neogit][neogit].
