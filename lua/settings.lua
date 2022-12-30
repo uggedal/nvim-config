@@ -64,7 +64,23 @@ local spelling = vim.api.nvim_create_augroup('Spelling', {})
 vim.api.nvim_create_autocmd('FileType', {
   command = 'setlocal spell',
   group = spelling,
-  pattern = { 'gitcommit', 'mail', 'markdown' },
+  pattern = {
+    'gitcommit',
+    'mail',
+    'markdown',
+
+    -- Languages with comment or string literal spelling support:
+    'bash',
+    'css',
+    'go',
+    'hcl',
+    'json',
+    'lua',
+    'make',
+    'python',
+    'toml',
+    'yaml',
+  },
 })
 vim.api.nvim_create_autocmd('FileType', {
   command = 'setlocal spelllang=en,nb',
