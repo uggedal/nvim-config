@@ -1,8 +1,8 @@
-local req = require('util').req
-
 return {
-  init = function(buftabline)
-    buftabline.setup({
+  'jose-elias-alvarez/buftabline.nvim',
+  lazy = false,
+  config = function()
+    require('buftabline').setup({
       auto_hide = true,
       go_to_maps = false,
       hlgroup = {
@@ -12,19 +12,10 @@ return {
 
     local btab_cmds = require('buftabline.commands')
 
-    req('which-key', function(wk)
-      local buftabline_maps = {}
-
-      for i = 1, 9 do
-        buftabline_maps[tostring(i)] = {
-          function()
-            btab_cmds.buftarget(i, 'buffer')
-          end,
-          'buffer ' .. i,
-        }
-      end
-
-      wk.register(buftabline_maps, { prefix = '<leader>' })
-    end)
+    for i = 1, 9 do
+      vim.keymap.set('n', '<leader>' .. i, function()
+        btab_cmds.buftarget(i, 'buffer')
+      end, { desc = 'buffer ' .. i })
+    end
   end,
 }

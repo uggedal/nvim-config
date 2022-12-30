@@ -1,7 +1,6 @@
-local has_wk, wk = pcall(require, 'which-key')
 local has_tele_bultin, tele_builtin = pcall(require, 'telescope.builtin')
 
-if not has_wk or not has_tele_bultin then
+if not has_tele_bultin then
   return
 end
 
@@ -32,20 +31,6 @@ local moved_todos = function()
   return todo_items('>', 'Moved TODO items')
 end
 
-wk.register({
-  t = {
-    name = 'todo',
-    o = {
-      open_todos,
-      'open todo items',
-    },
-    d = {
-      done_todos,
-      'done todo items',
-    },
-    m = {
-      moved_todos,
-      'moved todo items',
-    },
-  },
-}, { prefix = '<leader>' })
+vim.keymap.set('n', '<leader>to', open_todos, { desc = 'open todo items' })
+vim.keymap.set('n', '<leader>td', open_todos, { desc = 'done todo items' })
+vim.keymap.set('n', '<leader>tm', moved_todos, { desc = 'moved todo items' })

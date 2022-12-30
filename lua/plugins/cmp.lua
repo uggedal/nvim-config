@@ -9,7 +9,15 @@ local has_words_before = function()
 end
 
 return {
-  init = function(cmp)
+  'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
+  dependencies = {
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-nvim-lsp',
+  },
+  config = function()
+    local cmp = require('cmp')
     cmp.setup({
       mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp.mapping(function(fallback)

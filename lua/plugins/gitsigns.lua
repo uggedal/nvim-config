@@ -1,36 +1,28 @@
-local req = require('util').req
-
 return {
-  init = function(gitsigns)
-    gitsigns.setup({
-      signcolumn = false,
-      numhl = true,
-      on_attach = function(bufnr)
-        req('which-key', function(wk)
-          wk.register({
-            g = {
-              b = {
-                package.loaded.gitsigns.blame_line,
-                'git blame',
-              },
-            },
-          }, { prefix = '<leader>', buffer = bufnr })
-          wk.register({
-            ['['] = {
-              h = {
-                package.loaded.gitsigns.prev_hunk,
-                'previous git diff hunk',
-              },
-            },
-            [']'] = {
-              h = {
-                package.loaded.gitsigns.next_hunk,
-                'next git diff hunk',
-              },
-            },
-          }, { buffer = bufnr })
-        end)
-      end,
-    })
-  end,
+  'lewis6991/gitsigns.nvim',
+  event = 'BufReadPre',
+  config = {
+    signcolumn = false,
+    numhl = true,
+    on_attach = function(bufnr)
+      vim.keymap.set(
+        'n',
+        '<leader>gb',
+        package.loaded.gitsigns.blame_line,
+        { desc = 'git blame', buffer = bufnr }
+      )
+      vim.keymap.set(
+        'n',
+        '[h',
+        package.loaded.gitsigns.prev_hunk,
+        { desc = 'previous git diff hunk', buffer = bufnr }
+      )
+      vim.keymap.set(
+        'n',
+        ']h',
+        package.loaded.gitsigns.next_hunk,
+        { desc = 'next git diff hunk', buffer = bufnr }
+      )
+    end,
+  },
 }

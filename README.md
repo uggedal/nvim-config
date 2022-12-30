@@ -86,10 +86,10 @@ Neovim config in lua.
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
-  - [ ] `packer` to [lazy.nvim][lazy.nvim]:
-    - Use `keys` arg and `vim.keymap.set` with `desc`.
-    - Use `which-key` only to describe groups.
-    - Update `infra` `upgrade.py` and `doc/`.
+  - [-] `packer` to [lazy.nvim][lazy.nvim]:
+    - [x] Use `keys` arg and `vim.keymap.set` with `desc`.
+    - [x] Use `which-key` only to describe groups.
+    - [ ] Update `infra` `upgrade.py` and `doc/`.
   - [ ] [telescope-frequency][telescope-frequency].
   - [ ] [telescope-undo][telescope-undo].
   - [ ] [neogit][neogit].
@@ -106,7 +106,6 @@ Neovim config in lua.
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
 [cybu]: https://github.com/ghillb/cybu.nvim
-[lazy.nvim]: https://github.com/folke/lazy.nvim
 [telescope-frequency]: https://github.com/nvim-telescope/telescope-frecency.nvim
 [telescope-undo]: https://github.com/debugloop/telescope-undo.nvim
 [neogit]: https://github.com/TimUntersberger/neogit

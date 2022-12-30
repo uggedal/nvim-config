@@ -1,6 +1,14 @@
 return {
-  init = function(ts_configs)
-    ts_configs.setup({
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  -- event = 'BufReadPost',
+  lazy = false,
+  dependencies = {
+    'yioneko/nvim-yati',
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
+  config = function()
+    require('nvim-treesitter.configs').setup({
       ensure_installed = {
         'bash',
         'c',
@@ -19,7 +27,7 @@ return {
         'python',
         'query',
         'regex',
-        'sql',
+        -- Disabled until generation from grammar is not needed: 'sql',
         'toml',
         'yaml',
       },
@@ -41,7 +49,6 @@ return {
       },
       yati = { enable = true },
       context_commentstring = { enable = true, enable_autocmd = false },
-      playground = { enable = true },
     })
 
     require('vim.treesitter.query').set_query(

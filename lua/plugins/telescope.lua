@@ -1,8 +1,67 @@
-local req = require('util').req
-
 return {
-  init = function(telescope)
-    telescope.load_extension('fzf')
+  'nvim-telescope/telescope.nvim',
+  cmd = 'Telescope',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
+  keys = {
+    {
+      '<c-p>',
+      function()
+        require('telescope.builtin').find_files({
+          find_command = {
+            'rg',
+            '--color',
+            'never',
+            '--files',
+            '--ignore',
+            '--hidden',
+            '-g',
+            '!.git',
+          },
+        })
+      end,
+      desc = 'find files',
+    },
+    {
+      '<c-g>',
+      function()
+        require('telescope.builtin').live_grep()
+      end,
+      desc = 'grep files',
+    },
+    {
+      '<leader>gl',
+      function()
+        require('telescope.builtin').git_bcommits()
+      end,
+      desc = 'git buffer commits',
+    },
+    {
+      '<leader>gL',
+      function()
+        require('telescope.builtin').git_commits()
+      end,
+      desc = 'git commits',
+    },
+    {
+      '<leader>gB',
+      function()
+        require('telescope.builtin').git_branches()
+      end,
+      desc = 'git branches',
+    },
+    {
+      '<leader>gs',
+      function()
+        require('telescope.builtin').git_status()
+      end,
+      desc = 'git status',
+    },
+  },
+  config = function(telescope)
+    local telescope = require('telescope')
 
     telescope.setup({
       defaults = {
@@ -29,47 +88,6 @@ return {
       },
     })
 
-    local tele_builtin = require('telescope.builtin')
-
-    vim.keymap.set('n', '<c-p>', function()
-      tele_builtin.find_files({
-        find_command = {
-          'rg',
-          '--color',
-          'never',
-          '--files',
-          '--ignore',
-          '--hidden',
-          '-g',
-          '!.git',
-        },
-      })
-    end)
-
-    vim.keymap.set('n', '<c-g>', tele_builtin.live_grep)
-
-    req('which-key', function(wk)
-      wk.register({
-        g = {
-          name = 'git',
-          l = {
-            tele_builtin.git_bcommits,
-            'git buffer commits',
-          },
-          L = {
-            tele_builtin.git_commits,
-            'git commits',
-          },
-          B = {
-            tele_builtin.git_branches,
-            'git branches',
-          },
-          s = {
-            tele_builtin.git_status,
-            'git status',
-          },
-        },
-      }, { prefix = '<leader>' })
-    end)
+    telescope.load_extension('fzf')
   end,
 }

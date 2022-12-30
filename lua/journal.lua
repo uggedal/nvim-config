@@ -7,10 +7,9 @@ then
   return
 end
 
-local has_wk, wk = pcall(require, 'which-key')
 local has_tele_bultin, tele_builtin = pcall(require, 'telescope.builtin')
 
-if not has_wk or not has_tele_bultin then
+if not has_tele_bultin then
   return
 end
 
@@ -135,20 +134,6 @@ local journal_find = function()
   })
 end
 
-wk.register({
-  j = {
-    name = 'journal',
-    t = {
-      journal_today,
-      'today',
-    },
-    m = {
-      journal_tomorrow,
-      'tomorrow',
-    },
-    f = {
-      journal_find,
-      'find',
-    },
-  },
-}, { prefix = '<leader>' })
+vim.keymap.set('n', '<leader>jt', journal_today, { desc = 'today' })
+vim.keymap.set('n', '<leader>jm', journal_tomorrow, { desc = 'tomorrow' })
+vim.keymap.set('n', '<leader>jf', journal_find, { desc = 'find' })

@@ -1,115 +1,63 @@
-local req = require('util').req
+local map = vim.keymap.set
 
 -- Disable movement with cursor keys:
 for _, k in ipairs({ 'up', 'down', 'left', 'right' }) do
-  vim.keymap.set('n', '<' .. k .. '>', '<nop>')
-  vim.keymap.set('i', '<' .. k .. '>', '<nop>')
+  map('n', '<' .. k .. '>', '<nop>')
+  map('i', '<' .. k .. '>', '<nop>')
 end
 
 -- Disable man page lookup of word under cursor with K key:
-vim.keymap.set('n', 'K', '<nop>')
+map('n', 'K', '<nop>')
 
 -- Disable tab cycling keys (use buffers):
-vim.keymap.set('n', 'gT', '<nop>')
-vim.keymap.set('n', 'gt', '<nop>')
+map('n', 'gT', '<nop>')
+map('n', 'gt', '<nop>')
 
 -- Move up/down by display lines when long lines wrap:
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+map('n', 'j', 'gj')
+map('n', 'k', 'gk')
 
 -- Shorter bindings for split navigation:
 for _, k in ipairs({ 'h', 'j', 'k', 'l' }) do
-  vim.keymap.set('n', '<C-' .. k .. '>', '<C-w>' .. k)
+  map('n', '<C-' .. k .. '>', '<C-w>' .. k)
 end
 
 -- Keep search matches in the middle of the window:
 for _, k in ipairs({ '*', '#', 'n', 'N' }) do
-  vim.keymap.set('n', k, k .. 'zzzv')
+  map('n', k, k .. 'zzzv')
 end
 
 -- Stay in visual mode when indenting:
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
 -- Clear search highlight when clearing screen:
-vim.keymap.set('n', '<c-l>', ':nohlsearch<cr><c-l>', { silent = true })
+map('n', '<c-l>', ':nohlsearch<cr><c-l>', { silent = true })
 
 vim.g.mapleader = ','
 
-req('which-key', function(wk)
-  wk.register({
-    c = {
-      name = 'clipboard',
-      p = {
-        '"+p',
-        'paste from system clipboard',
-      },
-    },
-  }, { prefix = '<leader>' })
+map('n', '<leader>cp', '"+p', { desc = 'paste from system clipboard' })
+map('v', '<leader>cy', '"+y', { desc = 'yank to system clipboard' })
 
-  wk.register({
-    c = {
-      name = 'clipboard',
-      y = {
-        '"+y',
-        'yank to system clipboard',
-      },
-    },
-  }, { prefix = '<leader>', mode = 'v' })
+map('n', '<leader>p', ':bp<CR>', { desc = 'previous buffer' })
+map('n', '<leader>n', ':bn<CR>', { desc = 'next buffer' })
+map('n', '<leader>d', ':bd<CR>', { desc = 'delete buffer' })
+map(
+  'n',
+  '<leader>e',
+  ':e <C-R>=expand("%:p:h") . "/"<CR>',
+  { desc = 'edit in cwd' }
+)
 
-  wk.register({
-    p = {
-      ':bp<CR>',
-      'previous buffer',
-    },
-    n = {
-      ':bn<CR>',
-      'next buffer',
-    },
-    d = {
-      ':bd<CR>',
-      'delete buffer',
-    },
-    i = {
-      ':set invpaste<CR>',
-      'toggle paste mode',
-    },
-    g = {
-      name = 'git',
-      c = {
-        function()
-          vim.cmd([[!cd %:p:h && git add . && git ci -am sync && git push]])
-        end,
-        'git commit and sync',
-      },
-    },
-  }, { prefix = '<leader>' })
+map('n', '<leader>i', ':set invpaste<CR>', { desc = 'toggle paste mode' })
 
-  wk.register({
-    e = {
-      ':e <C-R>=expand("%:p:h") . "/"<CR>',
-      'edit in cwd',
-    },
-  }, { prefix = '<leader>', silent = false })
+map(
+  'n',
+  '<leader>gc',
+  '!cd %:p:h && git add . && git ci -am sync && git push',
+  { desc = 'git commit and sync', silent = false }
+)
 
-  wk.register({
-    ['['] = {
-      d = {
-        vim.diagnostic.goto_prev,
-        'previous diagnostic',
-      },
-    },
-    [']'] = {
-      d = {
-        vim.diagnostic.goto_next,
-        'next diagnostic',
-      },
-    },
-    g = {
-      l = {
-        vim.diagnostic.open_float,
-        'view diagnostic',
-      },
-    },
-  })
-end)
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
+map('n', 'gl', vim.diagnostic.open_float, { desc = 'view diagnostic' })

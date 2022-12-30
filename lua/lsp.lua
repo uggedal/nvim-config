@@ -1,5 +1,3 @@
-local req = require('util').req
-
 local lsp_format = function(bufnr)
   vim.lsp.buf.format({
     bufnr = bufnr,
@@ -26,23 +24,24 @@ return {
         buffer = bufnr,
       })
     end
-    req('which-key', function(wk)
-      wk.register({
-        g = {
-          d = {
-            vim.lsp.buf.definition,
-            'lsp definition',
-          },
-          r = {
-            vim.lsp.buf.rename,
-            'lsp rename',
-          },
-        },
-        K = {
-          vim.lsp.buf.hover,
-          'lsp symbol info',
-        },
-      }, { buffer = bufnr })
-    end)
+
+    vim.keymap.set(
+      'n',
+      'gd',
+      vim.lsp.buf.definition,
+      { desc = 'lsp definition', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      'gr',
+      vim.lsp.buf.rename,
+      { desc = 'lsp rename', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      'K',
+      vim.lsp.buf.hover,
+      { desc = 'lsp symbol info', buffer = bufnr }
+    )
   end,
 }
