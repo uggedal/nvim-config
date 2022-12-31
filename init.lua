@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins', {
   defaults = { lazy = true },
   install = { missing = false },
-  change_detection = { enabled = disable },
+  change_detection = { enabled = false },
   rtp = {
     disabled_plugins = {
       'gzip',
