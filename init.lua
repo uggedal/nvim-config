@@ -33,7 +33,7 @@ require('lazy').setup('plugins', {
       'zipPlugin',
     },
   },
+  dev = {
+    path = '~/.config/nvim/site',
+  },
 })
-
-require('journal')
-require('todo')

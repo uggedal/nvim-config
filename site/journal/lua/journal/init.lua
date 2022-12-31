@@ -1,16 +1,10 @@
-local journaldir = vim.fs.normalize('~/src/notes/journal')
+local config = {
+  journaldir = '',
+}
 
-if
-  vim.fn.isdirectory(journaldir) == 0
-  or vim.fn.getcwd() ~= vim.fs.dirname(journaldir)
-then
-  return
-end
-
-local has_tele_bultin, tele_builtin = pcall(require, 'telescope.builtin')
-
-if not has_tele_bultin then
-  return
+local is_in_journal_dir = function()
+  return vim.fn.isdirectory(config.journaldir) == 1
+    and vim.fn.getcwd() == vim.fs.dirname(config.journaldir)
 end
 
 local DAY = 24 * 60 * 60
@@ -37,7 +31,7 @@ local previous_journal_path = function(time)
   while time >= max_lookbehind do
     time = time - DAY
     local day = os.date('%Y-%m-%d', time)
-    local path = journaldir .. '/' .. day .. '.md'
+    local path = config.journaldir .. '/' .. day .. '.md'
     if vim.fn.filereadable(path) ~= 0 then
       return path
     end
@@ -47,8 +41,13 @@ local previous_journal_path = function(time)
 end
 
 local journal_on_day = function(time, prompt_title)
+  if not is_in_journal_dir() then
+    print('Not in correct dir: ' .. vim.fs.dirname(config.journaldir))
+    return
+  end
+
   local day = os.date('%Y-%m-%d', time)
-  local path = journaldir .. '/' .. day .. '.md'
+  local path = config.journaldir .. '/' .. day .. '.md'
 
   if vim.fn.filereadable(path) == 0 then
     local previous_path = previous_journal_path(time)
@@ -110,30 +109,37 @@ local journal_on_day = function(time, prompt_title)
       end
     end
   end
-  return tele_builtin.find_files({
+  return require('telescope.builtin').find_files({
     prompt_title = prompt_title,
-    cwd = journaldir,
+    cwd = config.journaldir,
     default_text = day,
     find_command = rg_defaults,
   })
 end
 
-local journal_today = function()
-  return journal_on_day(os.time(), "Open today's journal entry")
-end
+return {
+  journal_today = function()
+    return journal_on_day(os.time(), "Open today's journal entry")
+  end,
 
-local journal_tomorrow = function()
-  return journal_on_day(os.time() + DAY, "Open tomorrow's journal entry")
-end
+  journal_tomorrow = function()
+    return journal_on_day(os.time() + DAY, "Open tomorrow's journal entry")
+  end,
 
-local journal_find = function()
-  return tele_builtin.find_files({
-    prompt_title = 'Find journal entries',
-    cwd = journaldir,
-    find_command = rg_defaults,
-  })
-end
+  journal_find = function()
+    if not is_in_journal_dir() then
+      print('Not in correct dir: ' .. vim.fs.dirname(config.journaldir))
+      return
+    end
+    return require('telescope.builtin').find_files({
+      prompt_title = 'Find journal entries',
+      cwd = config.journaldir,
+      find_command = rg_defaults,
+    })
+  end,
 
-vim.keymap.set('n', '<leader>jt', journal_today, { desc = 'today' })
-vim.keymap.set('n', '<leader>jm', journal_tomorrow, { desc = 'tomorrow' })
-vim.keymap.set('n', '<leader>jf', journal_find, { desc = 'find' })
+  setup = function(new_config)
+    new_config = new_config or {}
+    config = vim.tbl_extend('force', config, new_config)
+  end,
+}
