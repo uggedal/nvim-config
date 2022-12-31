@@ -16,6 +16,7 @@ return {
         'comment',
         'go',
         'gomod',
+        'help',
         'hcl',
         'html',
         'javascript',
