@@ -1,5 +1,4 @@
 require('settings')
-require('colorscheme')
 require('languages')
 require('keymaps')
 
@@ -37,3 +36,5 @@ require('lazy').setup('plugins', {
     path = '~/.config/nvim/site',
   },
 })
+
+require('colorscheme')

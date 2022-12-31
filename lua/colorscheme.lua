@@ -1,9 +1,10 @@
 vim.o.background = 'light'
 
-require('gh')
+vim.cmd('colorscheme gh')
 
 -- Highlight trailing space when not in insert mode:
 local highlight_trailing = vim.api.nvim_create_augroup('HighlightTrailing', {})
+
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   command = 'highlight trail_space guibg=' .. vim.g.terminal_color_1,
   group = highlight_trailing,
