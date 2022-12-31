@@ -25,6 +25,9 @@ return {
       ['<leader>g'] = {
         name = 'git',
       },
+      ['<leader>l'] = {
+        name = 'lsp',
+      },
       ['<leader>j'] = {
         name = 'journal',
       },

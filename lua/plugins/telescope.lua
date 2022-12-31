@@ -32,6 +32,13 @@ return {
       desc = 'grep files',
     },
     {
+      'gr',
+      function()
+        require('telescope.builtin').lsp_references({ jump_type = 'never' })
+      end,
+      desc = 'lsp references',
+    },
+    {
       '<leader>gl',
       function()
         require('telescope.builtin').git_bcommits()
