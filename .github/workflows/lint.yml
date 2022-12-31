@@ -20,4 +20,4 @@ jobs:
       with:
         deno-version: v1.x
     - name: Check markdown format
-      run: deno fmt --options-line-width 79 --check
+      run: find . -name \*.md | xargs deno fmt --options-line-width 79 --check
