@@ -54,8 +54,8 @@ map('n', '<leader>i', ':set invpaste<CR>', { desc = 'toggle paste mode' })
 map(
   'n',
   '<leader>gc',
-  '!cd %:p:h && git add . && git ci -am sync && git push',
-  { desc = 'git commit and sync', silent = false }
+  ':!cd %:p:h && git add . && git ci -am sync && git push<CR>',
+  { desc = 'git commit and sync' }
 )
 
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
