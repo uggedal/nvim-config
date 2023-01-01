@@ -3,6 +3,12 @@ return {
   event = 'BufReadPre',
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
+    {
+      'folke/neodev.nvim',
+      config = {
+        setup_jsonls = false,
+      },
+    },
   },
   config = function()
     local lspconfig = require('lspconfig')
