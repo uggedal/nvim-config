@@ -48,12 +48,16 @@ vim.o.mouse = ''
 local toggle_cursorline_group =
   vim.api.nvim_create_augroup('ToggleCursorLine', {})
 vim.api.nvim_create_autocmd('InsertLeave', {
-  command = 'set nocursorline',
+  callback = function()
+    vim.opt.cursorline = false
+  end,
   group = toggle_cursorline_group,
   pattern = '*',
 })
 vim.api.nvim_create_autocmd('InsertEnter', {
-  command = 'set cursorline',
+  callback = function()
+    vim.opt.cursorline = true
+  end,
   group = toggle_cursorline_group,
   pattern = '*',
 })
@@ -62,7 +66,9 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 vim.bo.spelllang = 'en'
 local spelling = vim.api.nvim_create_augroup('Spelling', {})
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal spell',
+  callback = function()
+    vim.opt_local.spell = true
+  end,
   group = spelling,
   pattern = {
     'gitcommit',
@@ -83,7 +89,9 @@ vim.api.nvim_create_autocmd('FileType', {
   },
 })
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal spelllang=en,nb',
+  callback = function()
+    vim.opt_local.spelllang = { 'en', 'nb' }
+  end,
   group = spelling,
   pattern = { 'markdown' },
 })

@@ -25,21 +25,27 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Textfiles should be broken to a limited width:
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal textwidth=79',
+  callback = function()
+    vim.opt_local.textwidth = 79
+  end,
   group = vim.api.nvim_create_augroup('TextWidth', {}),
   pattern = { 'mail', 'markdown' },
 })
 
 -- Textfiles should not have line numbering
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal nonumber',
+  callback = function()
+    vim.opt_local.number = false
+  end,
   group = vim.api.nvim_create_augroup('NoNumber', {}),
   pattern = { 'mail', 'markdown' },
 })
 
 -- Markdown conceal:
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal conceallevel=1',
+  callback = function()
+    vim.opt_local.conceallevel = 1
+  end,
   group = vim.api.nvim_create_augroup('MarkdownConceal', {}),
   pattern = { 'markdown' },
 })
