@@ -17,11 +17,6 @@ map('n', 'gt', '<nop>')
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 
--- Shorter bindings for split navigation:
-for _, k in ipairs({ 'h', 'j', 'k', 'l' }) do
-  map('n', '<C-' .. k .. '>', '<C-w>' .. k)
-end
-
 -- Keep search matches in the middle of the window:
 for _, k in ipairs({ '*', '#', 'n', 'N' }) do
   map('n', k, k .. 'zzzv')
