@@ -30,6 +30,7 @@ return {
         'regex',
         -- Disabled until generation from grammar is not needed: 'sql',
         'toml',
+        'vim',
         'yaml',
       },
       highlight = { enable = true },
