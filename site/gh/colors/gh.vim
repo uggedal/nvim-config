@@ -1,3 +1,3 @@
 lua << EOF
-require("gh").setup()
+require("gh")
 EOF
