@@ -224,23 +224,6 @@ hl('DiffFile', c.green_1)
 hl('DiffNewFile', c.red_1)
 hl('DiffLine', c.blue_1)
 
--- HTML
-
-hl('htmlTag', c.fg_1)
-hl('htmlEndTag', c.fg_1)
-hl('htmlLink', c.fg_1)
-hl('htmlTagName', c.green_1)
-hl('htmlSpecialTagName', c.green_1)
-
--- Markdown
-
-hl('markdownH1', c.blue_1, nil, 'bold')
-hl('markdownH2', c.blue_1, nil, 'bold')
-hl('markdownH3', c.blue_1, nil, 'bold')
-hl('markdownH4', c.blue_1, nil, 'bold')
-hl('markdownLinkText', c.purple_1)
-hl('markdownListMarker', c.orange_1)
-
 -- Vim help
 
 hl('helpCommand', c.blue_1)
@@ -252,12 +235,6 @@ hl('helpHyperTextJump', c.blue_1)
 hl('helpOption', c.green_1)
 hl('helpSectionDelim', c.blue_1)
 hl('helpSpecial', c.purple_1)
-
--- YAML
-
-hl('yamlBlockMappingKey', c.green_1)
-hl('yamlDocumentStart', c.fg_1)
-hl('yamlDocumentEnd', c.fg_1)
 
 -- TreeSitter
 
