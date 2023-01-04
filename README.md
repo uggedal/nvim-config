@@ -9,7 +9,6 @@ Neovim config in lua.
   line numbering and conceal for different languages.
 - [keymaps](lua/keymaps.lua): definition and re-definition of built-in
   mappings:
-  - `<C-h/j/k/l>`: directional move to split.
   - `<C-l>`: clear screen (original) and clear search highlight.
   - `,cp`: paste from system clipboard.
   - `,cy`: yank to system clipboard (visual mode).
