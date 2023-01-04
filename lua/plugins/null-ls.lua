@@ -22,7 +22,6 @@ return {
 
       null_ls.builtins.formatting.deno_fmt.with({
         filetypes = { 'markdown' },
-        extra_args = { '--options-line-width', '79' },
       }),
 
       null_ls.builtins.formatting.shfmt,

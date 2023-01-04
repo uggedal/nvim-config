@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Textfiles should be broken to a limited width:
 vim.api.nvim_create_autocmd('FileType', {
-  command = 'setlocal textwidth=80',
+  command = 'setlocal textwidth=79',
   group = vim.api.nvim_create_augroup('TextWidth', {}),
   pattern = { 'mail', 'markdown' },
 })
