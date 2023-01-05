@@ -87,6 +87,11 @@ Neovim config in lua.
   - [ ] Make `cmp` lsp preview/doc correct
   - [x] Drop dark mode
   - [ ] Switch to `api.nvim_set_hl`
+  - [ ] Make language specific overrides to closer match upstream:
+    ```
+    @comment.c
+    @comment.lua
+    ```
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
