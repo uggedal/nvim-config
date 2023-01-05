@@ -82,6 +82,10 @@ Neovim config in lua.
 
 ## TODO
 
+- [ ] Tweak `gh` style:
+  - [-] Make it as close to possible as upstream
+  - [x] Drop dark mode
+  - [ ] Switch to `api.nvim_set_hl`
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
