@@ -58,113 +58,50 @@ return {
       context_commentstring = { enable = true, enable_autocmd = false },
     })
 
-    require('vim.treesitter.query').set_query(
+    local ts_query = require('vim.treesitter.query')
+
+    local md_inline_hl = ts_query.get_query('markdown_inline', 'highlights')
+
+    local md_inline_files =
+      ts_query.get_query_files('markdown_inline', 'highlights')
+
+    md_inline_mod = {}
+
+    if #md_inline_files == 1 then
+      for line in io.lines(md_inline_files[1]) do
+        -- Remove conceal of shortcut links, also conceals pending todo: - [-]
+        if line:match('^; Conceal shortcut links') ~= nil then
+          break
+        end
+        table.insert(md_inline_mod, line)
+      end
+    end
+
+    -- -- Add pending/moved captures:
+    table.insert(
+      md_inline_mod,
+      [[
+      (shortcut_link
+        (link_text) @text.todo.pending
+        (#eq? @text.todo.pending "-")
+      ) @text.todo.pending
+    ]]
+    )
+
+    table.insert(
+      md_inline_mod,
+      [[
+      (shortcut_link
+        (link_text) @text.todo.moved
+        (#eq? @text.todo.moved ">")
+      ) @text.todo.moved
+    ]]
+    )
+
+    ts_query.set_query(
       'markdown_inline',
       'highlights',
-      [[
-  ;; From MDeiml/tree-sitter-markdown
-  [
-    (code_span)
-    (link_title)
-  ] @text.literal
-
-  [
-    (emphasis_delimiter)
-    (code_span_delimiter)
-  ] @punctuation.delimiter
-
-  (emphasis) @text.emphasis
-
-  (strong_emphasis) @text.strong
-
-  [
-    (link_destination)
-    (uri_autolink)
-  ] @text.uri
-
-  [
-    (link_label)
-    (link_text)
-    (image_description)
-  ] @text.reference
-
-  [
-    (backslash_escape)
-    (hard_line_break)
-  ] @string.escape
-
-  ; "(" not part of query because of
-  ; https://github.com/nvim-treesitter/nvim-treesitter/issues/2206
-  ; TODO: Find better fix for this
-  (image ["!" "[" "]" "("] @punctuation.delimiter)
-  (inline_link ["[" "]" "("] @punctuation.delimiter)
-  ; Disabled so that ending punctuation for @text.mark.* below works:
-  ; (shortcut_link ["[" "]"] @punctuation.delimiter)
-
-  ([
-    (code_span_delimiter)
-    (emphasis_delimiter)
-  ] @conceal
-  (#set! conceal ""))
-
-  ; Conceal inline links
-  (inline_link
-    [
-      "["
-      "]"
-      "("
-      (link_destination)
-      ")"
-    ] @conceal
-    (#set! conceal ""))
-
-  ; Conceal image links
-  (image
-    [
-      "!"
-      "["
-      "]"
-      "("
-      (link_destination)
-      ")"
-    ] @conceal
-    (#set! conceal ""))
-
-  ; Conceal full reference links
-  (full_reference_link
-    [
-      "["
-      "]"
-      (link_label)
-    ] @conceal
-    (#set! conceal ""))
-
-  ; Conceal collapsed reference links
-  (collapsed_reference_link
-    [
-      "["
-      "]"
-    ] @conceal
-    (#set! conceal ""))
-
-  ; Conceal shortcut links (disabled)
-  ;(shortcut_link
-  ;  [
-  ;    "["
-  ;    "]"
-  ;  ] @conceal
-  ;  (#set! conceal ""))
-
-  (shortcut_link
-    (link_text) @text.mark.pending
-    (#eq? @text.mark.pending "-")
-  ) @text.mark.pending
-
-  (shortcut_link
-    (link_text) @text.mark.moved
-    (#eq? @text.mark.moved ">")
-  ) @text.mark.moved
-]]
+      table.concat(md_inline_mod, '\n')
     )
   end,
 }

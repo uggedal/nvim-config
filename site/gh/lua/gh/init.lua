@@ -145,17 +145,16 @@ hl('@comment', c.fg_2, nil, 'italic')
 li('@preproc', '@comment')
 
 hl('@text.todo', c.fg_2, nil, 'bold')
+hl('@text.todo.unchecked', c.fg_2)
+hl('@text.todo.checked', c.fg_2)
+hl('@text.todo.pending', c.green_1)
+hl('@text.todo.moved', c.purple_1)
 hl('@text.title', c.blue_1, nil, 'bold')
 hl('@text.literal', c.blue_1)
 hl('@text.strong', nil, nil, 'bold')
 hl('@text.emphasis', nil, nil, 'italic')
 hl('@text.reference', c.purple_1)
 hl('@text.uri', c.blue_1)
-
-hl('@text.mark.unchecked', c.red_1)
-hl('@text.mark.checked', c.bg_2)
-hl('@text.mark.pending', c.green_1)
-hl('@text.mark.moved', c.purple_1)
 
 hl('@tag', c.green_1)
 
