@@ -12,6 +12,7 @@ return {
       ensure_installed = {
         'bash',
         'c',
+        'cpp',
         'css',
         'comment',
         'diff',
