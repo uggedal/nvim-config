@@ -34,6 +34,7 @@ return {
         'python',
         'query',
         'regex',
+        'rust',
         -- Disabled until generation from grammar is not needed: 'sql',
         'toml',
         'vim',
