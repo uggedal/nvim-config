@@ -115,6 +115,7 @@ hl('@type.builtin', c.fg_1)
 hl('@attribute', c.purple_1)
 hl('@constant', c.brown_1)
 hl('@constant.builtin', c.blue_1)
+hl('@constant.macro', c.red_1)
 
 hl('@include', c.red_1)
 hl('@keyword', c.red_1)
@@ -122,19 +123,34 @@ hl('@keyword.operator', c.blue_1)
 hl('@operator', c.blue_1)
 hl('@conditional', c.red_1)
 hl('@repeat', c.red_1)
+hl('@exception', c.red_1)
+-- Shebang and c preprocessor, style for the former:
+li('@preproc', '@comment')
+-- c #define:
+hl('@define', c.red_1)
 
 hl('@method', c.purple_1)
 hl('@method.call', c.purple_1)
 hl('@function', c.purple_1)
 hl('@function.builtin', c.purple_1)
 hl('@function.call', c.purple_1)
+-- c preprocessor function name:
+hl('@function.macro', c.purple_1)
 hl('@parameter', c.fg_1)
 hl('@constructor', c.brown_1)
+-- go package identifier and rust use identifier:
+hl('@namespace', c.fg_1)
+-- c extern/static/auto/register/inline:
+hl('@storageclass', c.red_1)
 
 hl('@number', c.blue_1)
 hl('@float', c.blue_1)
 hl('@string', c.blue_0)
 hl('@string.escape', c.blue_0)
+-- vim help keycode, toml dates:
+hl('@string.special', c.purple_1)
+hl('@character', c.blue_0)
+hl('@character.special', c.red_1)
 hl('@boolean', c.blue_1)
 
 hl('@punctuation.bracket', c.fg_1)
@@ -142,7 +158,6 @@ hl('@punctuation.special', c.fg_1)
 hl('@punctuation.delimiter', c.fg_1)
 
 hl('@comment', c.fg_2, nil, 'italic')
-li('@preproc', '@comment')
 
 hl('@text.todo', c.fg_2, nil, 'bold')
 hl('@text.todo.unchecked', c.fg_2)
@@ -160,6 +175,20 @@ hl('@tag', c.green_1)
 
 hl('@text.diff.add', nil, c.green_bg)
 hl('@text.diff.delete', nil, c.red_bg)
+
+-- Currently unused in nvim highlights:
+-- @class
+-- @debug
+-- @decorator
+-- @enum
+-- @enumMember
+-- @event
+-- @interface
+-- @macro
+-- @modifier
+-- @punctuation
+-- @regexp
+-- @struct
 
 -- Diff
 
@@ -179,7 +208,7 @@ hl('DiffLine', c.purple_1)
 -- li('LspReferenceText', 'CursorLine')
 -- li('LspReferenceRead', 'CursorLine')
 -- li('LspReferenceWrite', 'CursorLine')
---
+
 -- hl('LspDiagnosticsDefaultError', c.red_1)
 -- hl('LspDiagnosticsUnderlineError', nil, nil, 'underline', c.red_1)
 -- hl('LspDiagnosticsVirtualTextError', c.red_1, c.red_3)
