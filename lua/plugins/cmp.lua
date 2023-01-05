@@ -12,7 +12,6 @@ return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-    'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
   },
@@ -48,12 +47,6 @@ return {
       sources = cmp.config.sources({
         { name = 'path' },
         { name = 'nvim_lsp' },
-        {
-          name = 'buffer',
-          option = {
-            get_bufnrs = vim.api.nvim_list_bufs, -- all buffers as source
-          },
-        },
       }),
     })
   end,
