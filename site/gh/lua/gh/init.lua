@@ -37,304 +37,202 @@ local li = function(group, link)
   vim.cmd('highlight! link ' .. group .. ' ' .. link)
 end
 
-local c = {}
+local c = {
+  fg_1 = '#24292f',
+  fg_2 = '#6e7781',
+  bg_0 = '#ffffff',
+  bg_1 = '#f6f8fa',
+  bg_2 = '#d0d7de',
 
-if vim.o.background == 'light' then
-  c = {
-    fg_1 = '#24292e',
-    fg_2 = '#6a737d',
-    fg_3 = '#babbbc',
-    fg_blue = '#05264c',
-    bg_1 = '#ffffff',
-    bg_2 = '#fafbfc',
-    bg_3 = '#e1e4e8',
-    blue_0 = '#032f62',
-    blue_1 = '#005cc5',
-    blue_2 = '#c8e1ff',
-    blue_3 = '#f1f8ff',
-    red_0 = '#b31d28',
-    red_1 = '#d73a49',
-    red_2 = '#fdb8c0',
-    red_3 = '#ffeef0',
-    green_0 = '#165c26',
-    green_1 = '#22863a',
-    green_2 = '#acf2bd',
-    green_3 = '#e6ffed',
-    orange_0 = '#c24e00',
-    orange_1 = '#e36209',
-    orange_2 = '#ffab70',
-    purple_0 = '#4c2889',
-    purple_1 = '#6f42c1',
-    pink_0 = '#99306f',
-    pink_1 = '#d03592',
-    yellow_1 = '#dbab09',
-    yellow_3 = '#fffbdd',
-  }
-else
-  c = {
-    fg_1 = '#c9d1d9',
-    fg_2 = '#8b949e',
-    fg_3 = '#585d64',
-    fg_blue = '#c8e1ff',
-    bg_1 = '#0d1117',
-    bg_2 = '#161b22',
-    bg_3 = '#30363d',
-    blue_0 = '#a5d6ff',
-    blue_1 = '#79c0ff',
-    blue_2 = '#2d465d',
-    blue_3 = '#111d2f',
-    red_0 = '#ffc1ba',
-    red_1 = '#ff7b72',
-    red_2 = '#882727',
-    red_3 = '#36181c',
-    green_0 = '#aff5b4',
-    green_1 = '#7ee787',
-    green_2 = '#226d32',
-    green_3 = '#132e1f',
-    orange_0 = '#ffdfb6',
-    orange_1 = '#ffa657',
-    orange_2 = '#762d0a',
-    purple_0 = '#eddeff',
-    purple_1 = '#d2a8ff',
-    pink_0 = '#ffdaec',
-    pink_1 = '#ff9bce',
-    yellow_1 = '#ffea7f',
-    yellow_3 = '#533d11',
-  }
-end
-
--- Vim Terminal
-
-vim.g.terminal_color_0 = c.bg_2
-vim.g.terminal_color_8 = c.bg_3
-vim.g.terminal_color_1 = c.red_1
-vim.g.terminal_color_9 = c.red_0
-vim.g.terminal_color_2 = c.green_1
-vim.g.terminal_color_10 = c.green_0
-vim.g.terminal_color_3 = c.orange_1
-vim.g.terminal_color_11 = c.orange_0
-vim.g.terminal_color_4 = c.blue_1
-vim.g.terminal_color_12 = c.blue_0
-vim.g.terminal_color_5 = c.pink_1
-vim.g.terminal_color_13 = c.pink_0
-vim.g.terminal_color_6 = c.purple_1
-vim.g.terminal_color_14 = c.purple_0
-vim.g.terminal_color_7 = c.fg_2
-vim.g.terminal_color_15 = c.fg_1
+  red_1 = '#cf222e',
+  red_bg = '#ffd7d5',
+  green_1 = '#116329',
+  green_bg = '#ccffd8',
+  blue_0 = '#0a3069',
+  blue_1 = '#0550ae',
+  brown_1 = '#953800',
+  brown_2 = '#bf8700',
+  purple_1 = '#8250df',
+  yellow_1 = '#ebddb5',
+  yellow_2 = '#fff8c5',
+}
 
 -- Editor
-
-hl('ColorColumn', nil, c.bg_2) -- columns set with 'colorcolumn'
-hl('Conceal', c.fg_3, c.bg_1) -- placeholder characters for concealed text
 hl('Cursor', nil, c.fg_1) -- character under the cursor
-hl('CursorColumn', nil, c.bg_2) -- column following cursor
-hl('CursorLine', nil, c.bg_2) -- vertical line under cursor
-hl('Directory', c.blue_1) -- directory names in listsings
-hl('ErrorMsg', c.red_1) -- command line error messages
-hl('VertSplit', c.fg_3) -- column seperating vertical splits
-hl('Folded', c.fg_3) -- line for closed folds
-hl('FoldColumn', c.fg_3) -- gutter column showing folds
+hl('CursorLine', nil, c.bg_1) -- vertical line under cursor
+
+hl('LineNr', c.fg_2) -- gutter line numbers
+hl('CursorLineNr', nil, c.bg_1) -- gutter line number for current line
+hl('ColorColumn', nil, c.bg_1) -- columns set with 'colorcolumn'
 hl('SignColumn', c.fg_2) -- gutter column showing signs
-hl('IncSearch', nil, c.orange_2) -- incremental search
-hl('Substitute', nil, c.red_2) -- text replaced with :s
-hl('LineNr', c.fg_3) -- gutter line numbers
-hl('CursorLineNr', nil, c.bg_2) -- gutter line number for current line
-hl('MatchParen', nil, c.yellow_3) -- current and matching bracket
+
+hl('StatusLine', c.fg_1, c.bg_1) -- status line of current window
+hl('StatusLineNC', c.fg_2, c.bg_1) -- status line of non-current window
 hl('ModeMsg', c.fg_1) -- mode message (-- INSERT --)
 hl('MsgArea', c.fg_1) -- area for messages and cmdline
 hl('MoreMsg', c.fg_1) -- text for pager prompt
-hl('NonText', c.fg_3) -- characters that are not part of the text
-hl('Normal', c.fg_1, c.bg_1) -- normal text
-hl('NormalFloat', nil, c.bg_2) -- normal text in floating windows
-hl('NormalNC', c.fg_1, c.bg_1) -- normal text in non-current windows
-hl('PMenu', nil, c.bg_2) -- popup menu, normal item
-hl('PMenuSel', nil, c.blue_2) -- popup menu, selected item
-hl('PMenuSbar', nil, c.bg_3) -- popup menu, scrollbar
-hl('PMenuThumb', nil, c.fg_3) -- popup menu, scrollbar indicator
 hl('Question', c.blue_1) -- prompts to continue with Enter or yes/no
-hl('QuickFixLine', nil, c.yellow_3) -- current quickfix item
-hl('Search', nil, c.yellow_3) -- last search pattern
-hl('SpecialKey', c.fg_2) -- unprintable characters
-hl('SpellBad', nil, nil, 'undercurl', c.red_1) -- unrecognized word
-hl('SpellCap', nil, nil, 'undercurl', c.orange_1) -- non-capitalized word
-hl('SpellLocal', nil, nil, 'undercurl', c.blue_1) -- used in other region
-hl('SpellRare', nil, nil, 'undercurl', c.fg_2) -- rarely used word
-hl('StatusLine', c.fg_blue, c.blue_3) -- status line of current window
-hl('StatusLineNC', c.fg_2, c.bg_2) -- status line of non-current window
-hl('TabLine', nil, c.blue_3) -- tab line
-hl('TabLineFill', nil, c.bg_1) -- tab line outside tabs
-hl('TabLineSel', nil, c.blue_2) -- tabline, current buffer
 hl('Title', c.fg_1, nil, 'bold') -- tites from cmdline output
-hl('Visual', nil, c.blue_3) -- visual mode selection
-hl('VisualNOS', nil, c.blue_3) -- visual mode selection (not vim owned)
-hl('WarningMsg', c.red_1) -- warning messages
+hl('ErrorMsg', c.red_1) -- command line error messages
+hl('WarningMsg', c.brown_1) -- warning messages
+hl('WildMenu', c.fg_1, c.yellow_2) -- current match in wildmenu completion
+
+hl('TabLine') -- tab line
+hl('TabLineFill') -- tab line outside tabs
+hl('TabLineSel', nil, c.bg_2) -- tabline, current buffer
+
+hl('VertSplit', c.bg_2) -- column seperating vertical splits
+
+hl('Normal', c.fg_1, c.bg_0) -- normal text
+hl('NormalNC', c.fg_1, c.bg_0) -- normal text in non-current windows
+hl('NormalFloat', nil, c.bg_1) -- normal text in floating windows
+hl('NonText', c.fg_2) -- chars after buffer content and counter in Telescope
+
+hl('IncSearch', nil, c.yellow_1) -- incremental search
+hl('Search', nil, c.yellow_2) -- last search pattern
+hl('MatchParen', nil, c.yellow_2) -- current and matching bracket
+hl('Visual', nil, c.yellow_2) -- visual mode selection
 hl('Whitespace', c.fg_2) -- whitespace (with 'listchars')
-hl('WildMenu', c.fg_1, c.blue_2) -- current match in wildmenu completion
 
--- Standard Syntax
+hl('Directory', c.blue_1) -- directory names in listsings
 
-hl('Comment', c.fg_2, nil, 'italic')
-hl('Constant', c.orange_1)
-hl('String', c.blue_0)
-li('Character', 'String')
-hl('Number', c.blue_1)
-hl('Boolean', c.blue_1)
-hl('Float', c.blue_1)
-hl('Identifier', c.red_1)
-hl('Function', c.purple_1)
-hl('Statement', c.red_1)
-hl('Conditional', c.red_1)
-hl('Repeat', c.red_1)
-hl('Label', c.purple_1)
-hl('Operator', c.blue_1)
-hl('Keyword', c.red_1)
-hl('Exception', c.red_1)
-hl('PreProc', c.red_1)
-hl('Include', c.red_1)
-hl('Define', c.purple_1)
-hl('Macro', c.purple_1)
-hl('PreCondit', c.red_1)
-hl('Type', c.blue_1)
-hl('StorageClass', c.red_1)
-hl('Structure', c.orange_1)
-hl('Typedef', c.red_1)
-hl('Special', c.blue_1)
-hl('SpecialChar', c.blue_1)
--- hl('Tag', nil)
-hl('Delimiter', c.blue_1)
-hl('SpecialComment', c.green_1)
--- hl('Debug', nil)
-hl('Bold', nil, nil, 'bold')
-hl('Italic', nil, nil, 'italic')
-hl('Underlined', nil, nil, 'underline')
--- hl('Ignore', nil)
-hl('Error', nil, c.red_3, 'bold')
-hl('Todo', c.red_1, nil, 'bold')
+hl('Folded', nil, c.bg_1) -- line for closed folds
+
+hl('PMenu', nil, c.bg_1) -- popup menu, normal item
+hl('PMenuSel', nil, c.yellow_2) -- popup menu, selected item
+hl('PMenuSbar', nil, c.bg_2) -- popup menu, scrollbar
+hl('PMenuThumb', nil, c.fg_2) -- popup menu, scrollbar indicator
+
+-- Treesitter
+hl('@variable', c.fg_1)
+hl('@field', c.fg_1)
+hl('@property', c.blue_1)
+hl('@label', c.fg_1)
+
+hl('@type', c.brown_1)
+hl('@type.definition', c.brown_1)
+hl('@type.builtin', c.fg_1)
+hl('@attribute', c.purple_1)
+hl('@constant', c.brown_1)
+hl('@constant.builtin', c.blue_1)
+
+hl('@include', c.red_1)
+hl('@keyword', c.red_1)
+hl('@keyword.operator', c.blue_1)
+hl('@operator', c.blue_1)
+hl('@conditional', c.red_1)
+hl('@repeat', c.red_1)
+
+hl('@method', c.purple_1)
+hl('@method.call', c.purple_1)
+hl('@function', c.purple_1)
+hl('@function.builtin', c.purple_1)
+hl('@function.call', c.purple_1)
+hl('@parameter', c.fg_1)
+hl('@constructor', c.brown_1)
+
+hl('@number', c.blue_1)
+hl('@float', c.blue_1)
+hl('@string', c.blue_0)
+hl('@string.escape', c.blue_0)
+hl('@boolean', c.blue_1)
+
+hl('@punctuation.bracket', c.fg_1)
+hl('@punctuation.special', c.fg_1)
+hl('@punctuation.delimiter', c.fg_1)
+
+hl('@comment', c.fg_2, nil, 'italic')
+li('@preproc', '@comment')
+
+hl('@text.todo', c.fg_2, nil, 'bold')
+hl('@text.title', c.blue_1, nil, 'bold')
+hl('@text.literal', c.blue_1)
+hl('@text.strong', nil, nil, 'bold')
+hl('@text.emphasis', nil, nil, 'italic')
+hl('@text.reference', c.purple_1)
+hl('@text.uri', c.blue_1)
+
+hl('@text.mark.unchecked', c.red_1)
+hl('@text.mark.checked', c.bg_2)
+hl('@text.mark.pending', c.green_1)
+hl('@text.mark.moved', c.purple_1)
+
+hl('@tag', c.green_1)
+
+hl('@text.diff.add', nil, c.green_bg)
+hl('@text.diff.delete', nil, c.red_bg)
 
 -- Diff
 
-hl('DiffAdd', nil, c.green_3) -- added line
-hl('DiffChange', nil, c.yellow_3) -- changed line
-hl('DiffDelete', nil, c.red_3) -- deleted line
-hl('DiffText', nil, c.yellow_3, 'undercurl', c.blue_1) -- changed text within changed line
+hl('DiffAdd', nil, c.green_bg)
+hl('DiffChange', nil, c.yellow_2)
+hl('DiffDelete', nil, c.red_bg)
+hl('DiffText', nil, c.yellow_3, 'undercurl', c.blue_1)
 
 li('DiffAdded', 'DiffAdd')
 li('DiffRemoved', 'DiffDelete')
-hl('DiffFile', c.green_1)
-hl('DiffNewFile', c.red_1)
-hl('DiffLine', c.blue_1)
+hl('DiffFile', c.blue_1)
+hl('DiffNewFile', c.green_1)
+hl('DiffLine', c.purple_1)
 
--- Vim help
+-- TODO: LSP
 
-hl('helpCommand', c.blue_1)
-hl('helpExample', c.blue_1)
-hl('helpHeader', c.blue_1, nil, 'bold')
-hl('helpHeadline', c.fg_1)
-hl('helpHyperTextEntry', c.red_1)
-hl('helpHyperTextJump', c.blue_1)
-hl('helpOption', c.green_1)
-hl('helpSectionDelim', c.blue_1)
-hl('helpSpecial', c.purple_1)
-
--- TreeSitter
-
-hl('TSAnnotation', c.blue_1)
-hl('TSAttribute', c.blue_1) -- undocumented
-li('TSBoolean', 'Boolean')
-li('TSCharacter', 'String')
-li('TSComment', 'Comment')
-li('TSConditional', 'Conditional') -- conditional keywords
-li('TSConstant', 'Constant')
-hl('TSConstBuiltin', c.blue_1) -- contant built into the langauge (nil for Lua)
-hl('TSConstMacro', c.blue_1) -- constants defined by macros (NULL in C)
-li('TSConstructor', 'Function') -- constructor calls and definitions ({} in Lua)
-li('TSError', 'Error') -- syntax/parser errors
-li('TSException', 'Exception') -- exception keywords
-hl('TSField', c.fg_1)
-li('TSFloat', 'Float')
-li('TSFunction', 'Function') -- calls and definitions
-li('TSFuncBuiltin', 'Function') -- builtin functions (table.insert in Lua)
-hl('TSFuncMacro', c.blue_1) -- macro defined function call and definitions
-li('TSInclude', 'Include') -- include and imports
-hl('TSKeyword', c.red_1) -- keywords not in other categories
-hl('TSKeywordFunction', c.red_1) -- keywords used to define functions
-li('TSKeywordOperator', 'Operator') -- operators that are English words (and)
-hl('TSLabel', c.blue_1) -- labels (foo: in C)
-li('TSMethod', 'Function') -- method calls and definitions
-hl('TSNamespace', c.red_1) -- identifiers for modules or namespaces
-li('TSNone', 'Normal') -- no highligting
-li('TSNumber', 'Number')
-hl('TSOperator', c.blue_1) -- operators (+, -, etc and -> and * in C)
-hl('TSParameter', c.fg_1) -- parameters of a function
-hl('TSParameterReference', c.fg_1) -- references to parameters of a function
-hl('TSProperty', c.fg_1) -- same as TSField
-hl('TSPunctDelimiter', c.fg_1) -- Delimiters (i.e. .)
-hl('TSPunctBracket', c.fg_1) -- brackets and parens
-hl('TSPunctSpecial', c.fg_1) -- punctuation not in other categories
-li('TSRepeat', 'Repeat') -- keywords related to loops
-li('TSString', 'String')
-hl('TSStringRegex', 'String') -- regular expressions
-hl('TSStringEscape', c.blue_1) -- escape charactes within strings (i.e. \n)
-hl('TSTag', c.green_1) -- i.e. html tag names
-hl('TSTagDelimiter', c.fg_1) -- tag delimiters (<, >, /)
-li('TSText', 'String') -- strings considered text in markup languages
-hl('TSStrong', nil, nil, 'bold')
-hl('TSEmphasis', nil, nil, 'italic')
-hl('TSUnderline', nil, nil, 'underline')
-hl('TSStrike', nil, nil, 'strikethrough')
-hl('TSTitle', c.blue_1, nil, 'bold') -- text part of title
-hl('TSLiteral', c.orange_1) -- literal text
-hl('TSURI', c.blue_1) -- URI like link or email
--- hl('TSMath', nil.blue_1) -- latex math
-hl('TSTextReference', c.blue_1) -- footnote, text references, citations
--- hl('TSEnviroment', nil) -- text environments of markup langauges
-hl('TSNote', c.green_1, nil, 'bold') -- informatinal note (i.e. NOTE:)
-hl('TSWarning', c.orange_1, nil, 'bold') -- warning note (i.e. TODO)
-hl('TSDanger', c.red_1, nil, 'bold') -- danger note (i.e. FIXME)
-hl('TSType', c.fg_1)
-hl('TSTypeBuiltin', c.fg_1) -- built in types
--- hl('TSVariable', nil) -- fallback for variable names
--- hl('TSVariableBuiltin', nil) -- built in variables (i.e. this, self)
-
--- LSP
-
-li('LspReferenceText', 'CursorLine')
-li('LspReferenceRead', 'CursorLine')
-li('LspReferenceWrite', 'CursorLine')
-
-hl('LspDiagnosticsDefaultError', c.red_1)
-hl('LspDiagnosticsUnderlineError', nil, nil, 'underline', c.red_1)
-hl('LspDiagnosticsVirtualTextError', c.red_1, c.red_3)
-hl('LspDiagnosticsDefaultWarning', c.orange_1)
-hl('LspDiagnosticsUnderlineWarning', nil, nil, 'underline', c.orange_1)
-hl('LspDiagnosticsVirtualTextWarning', c.orange_1, c.yellow_3)
-hl('LspDiagnosticsDefaultInformation', c.blue_1)
-hl('LspDiagnosticsUnderlineInformation', nil, nil, 'underline', c.blue_1)
-hl('LspDiagnosticsVirtualTextInformation', c.blue_1, c.blue_3)
-hl('LspDiagnosticsDefaultHint', c.green_1)
-hl('LspDiagnosticsUnderlineHint', nil, nil, 'underline', c.green_1)
-hl('LspDiagnosticsVirtualTextHint', c.green_1, c.green_3)
-
--- Markdown
-hl('@text.literal', c.orange_1)
-hl('@text.title', nil, nil, 'bold')
-hl('@text.title.marker', c.fg_3)
-hl('@text.title.h1', c.blue_0)
-hl('@text.title.h2', c.blue_1)
-hl('@text.title.h3', c.purple_1)
-hl('@text.strong', nil, nil, 'bold')
-hl('@text.emphasis', nil, nil, 'italic')
-hl('@text.reference', c.blue_1)
-hl('@text.mark.unchecked', c.blue_1)
-hl('@text.mark.checked', c.fg_3)
-hl('@text.mark.pending', c.green_1)
-hl('@text.mark.moved', c.yellow_1)
+-- li('LspReferenceText', 'CursorLine')
+-- li('LspReferenceRead', 'CursorLine')
+-- li('LspReferenceWrite', 'CursorLine')
+--
+-- hl('LspDiagnosticsDefaultError', c.red_1)
+-- hl('LspDiagnosticsUnderlineError', nil, nil, 'underline', c.red_1)
+-- hl('LspDiagnosticsVirtualTextError', c.red_1, c.red_3)
+-- hl('LspDiagnosticsDefaultWarning', c.orange_1)
+-- hl('LspDiagnosticsUnderlineWarning', nil, nil, 'underline', c.orange_1)
+-- hl('LspDiagnosticsVirtualTextWarning', c.orange_1, c.yellow_3)
+-- hl('LspDiagnosticsDefaultInformation', c.blue_1)
+-- hl('LspDiagnosticsUnderlineInformation', nil, nil, 'underline', c.blue_1)
+-- hl('LspDiagnosticsVirtualTextInformation', c.blue_1, c.blue_3)
+-- hl('LspDiagnosticsDefaultHint', c.green_1)
+-- hl('LspDiagnosticsUnderlineHint', nil, nil, 'underline', c.green_1)
+-- hl('LspDiagnosticsVirtualTextHint', c.green_1, c.green_3)
 
 -- Telescope
+hl('TelescopeBorder', c.bg_2)
+hl('TelescopeMatching', c.red_1)
+hl('TelescopePromptPrefix', c.fg_1)
 
-hl('TelescopeBorder', c.fg_2)
+-- Gitsigns
+hl('GitSignsAddNr', nil, c.green_bg)
+hl('GitSignsChangeNr', nil, c.yellow_2)
+hl('GitSignsDeleteNr', nil, c.red_bg)
 
--- Gitsigns:
-hl('GitSignsAddNr', c.green_1)
-hl('GitSignsChangeNr', c.yellow_1)
-hl('GitSignsDeleteNr', c.red_1)
+-- Which key
+hl('WhichKey', c.red_1, nil, 'bold')
+hl('WhichKeyGroup', c.fg_1)
+hl('WhichKeySeparator', c.fg_1)
+hl('WhichKeyDesc', c.fg_1)
+
+-- Highlight trailing space when not in insert mode:
+local highlight_trailing = vim.api.nvim_create_augroup('HighlightTrailing', {})
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead', 'InsertLeave' }, {
+  callback = function()
+    hl('trail_space', nil, c.red_1)
+  end,
+  group = highlight_trailing,
+  pattern = '*',
+})
+
+vim.api.nvim_create_autocmd('InsertEnter', {
+  callback = function()
+    hl('trail_space')
+  end,
+  group = highlight_trailing,
+  pattern = '*',
+})
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  callback = function()
+    vim.cmd([[match trail_space /\s\+$/]])
+  end,
+  group = highlight_trailing,
+  pattern = '*',
+})

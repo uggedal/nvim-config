@@ -38,4 +38,5 @@ require('lazy').setup('plugins', {
   },
 })
 
-require('colorscheme')
+vim.o.background = 'light'
+vim.cmd('colorscheme gh')

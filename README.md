@@ -95,7 +95,6 @@ Neovim config in lua.
 - [ ] Check [kickstart.nvim][kickstart.nvim].
 - [ ] `journal`: create calendar (use/reuse
       [neorg implementation](neorg-calendar)).
-- [-] `gh`: port from `TS*` to capture names ([example][ts-capture-example]).
 - [ ] Create [clipboard-image][clipboard-image] alternative using
       `screencapture -i %s`.
 
@@ -110,5 +109,4 @@ Neovim config in lua.
 [nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
 [kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
-[ts-capture-example]: https://github.com/sam4llis/nvim-tundra/commit/b88c91f0
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
