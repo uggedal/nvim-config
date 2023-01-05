@@ -57,7 +57,10 @@ local c = {
   yellow_2 = '#fff8c5',
 }
 
+--
 -- Editor
+--
+
 hl('Cursor', nil, c.fg_1) -- character under the cursor
 hl('CursorLine', nil, c.bg_1) -- vertical line under cursor
 
@@ -103,7 +106,10 @@ hl('PMenuSel', nil, c.yellow_2) -- popup menu, selected item
 hl('PMenuSbar', nil, c.bg_2) -- popup menu, scrollbar
 hl('PMenuThumb', nil, c.fg_2) -- popup menu, scrollbar indicator
 
+--
 -- Treesitter
+--
+
 hl('@variable', c.fg_1)
 hl('@field', c.fg_1)
 hl('@property', c.blue_1)
@@ -203,7 +209,9 @@ hl('DiffFile', c.blue_1)
 hl('DiffNewFile', c.green_1)
 hl('DiffLine', c.purple_1)
 
+--
 -- TODO: LSP
+--
 
 -- li('LspReferenceText', 'CursorLine')
 -- li('LspReferenceRead', 'CursorLine')
@@ -222,17 +230,26 @@ hl('DiffLine', c.purple_1)
 -- hl('LspDiagnosticsUnderlineHint', nil, nil, 'underline', c.green_1)
 -- hl('LspDiagnosticsVirtualTextHint', c.green_1, c.green_3)
 
+--
 -- Telescope
+--
+
 hl('TelescopeBorder', c.bg_2)
 hl('TelescopeMatching', c.red_1)
 hl('TelescopePromptPrefix', c.fg_1)
 
+--
 -- Gitsigns
+--
+
 hl('GitSignsAddNr', nil, c.green_bg)
 hl('GitSignsChangeNr', nil, c.yellow_2)
 hl('GitSignsDeleteNr', nil, c.red_bg)
 
--- Which key
+--
+-- Which Key
+--
+
 hl('WhichKey', c.red_1, nil, 'bold')
 hl('WhichKeyGroup', c.fg_1)
 hl('WhichKeySeparator', c.fg_1)
