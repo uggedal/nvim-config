@@ -19,9 +19,22 @@ return {
     local lsp_on_attach = function(client, bufnr)
       require('lsp').lsp_on_attach(client, bufnr)
 
-      vim.keymap.set('n', '<leader>li', require('lspconfig.ui.lspinfo'), {
+      vim.keymap.set('n', '<leader>li', ':LspInfo<cr>', {
         desc = 'lsp server info',
         buffer = bufnr,
+        silent = true,
+      })
+
+      vim.keymap.set('n', '<leader>le', ':LspRestart<cr>', {
+        desc = 'lsp server restart',
+        buffer = bufnr,
+        silent = true,
+      })
+
+      vim.keymap.set('n', '<leader>ls', ':LspStop<cr>', {
+        desc = 'lsp server stop',
+        buffer = bufnr,
+        silent = true,
       })
     end
 
