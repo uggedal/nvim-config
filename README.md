@@ -82,12 +82,6 @@ Neovim config in lua.
 
 ## TODO
 
-- [ ] Tweak `gh` style:
-  - [ ] Make language specific overrides to closer match upstream:
-    ```
-    @comment.c
-    @comment.lua
-    ```
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
