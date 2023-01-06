@@ -83,10 +83,6 @@ Neovim config in lua.
 ## TODO
 
 - [ ] Tweak `gh` style:
-  - [-] Make it as close to possible as upstream
-  - [x] Make `cmp` lsp preview/doc correct
-  - [x] Drop dark mode
-  - [x] Switch to `api.nvim_set_hl`
   - [ ] Make language specific overrides to closer match upstream:
     ```
     @comment.c
