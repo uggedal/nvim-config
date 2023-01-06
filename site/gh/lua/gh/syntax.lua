@@ -104,6 +104,15 @@ return {
   ['@function.builtin.bash'] = { fg = c.blue_1 },
   ['@function.call.bash'] = { fg = c.blue_1 },
 
+  -- c
+  ['@preproc.c'] = { fg = c.red_1 },
+  ['@constant.c'] = { fg = c.purple_1 },
+  ['@function.call.c'] = { fg = c.blue_1 },
+  ['@keyword.operator.c'] = { fg = c.red_1 },
+  ['@operator.c'] = { fg = c.fg_1 },
+  ['@property.c'] = { fg = c.fg_1 },
+  ['@type.c'] = { fg = c.fg_1 },
+  ['@type.builtin.c'] = { fg = c.red_1 },
   -- toml
   ['@type.toml'] = { fg = c.purple_1 },
   ['@property.toml'] = { fg = c.fg_1 },
