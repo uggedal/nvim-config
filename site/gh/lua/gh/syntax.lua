@@ -166,6 +166,12 @@ return {
   ['@function.builtin.make'] = { fg = c.blue_1 },
   ['@operator.make'] = { fg = c.fg_1 },
 
+  -- regex
+  ['@constant.regex'] = { fg = c.blue_1 },
+  ['@operator.regex'] = { fg = c.blue_1 },
+  ['@punctuation.bracket.regex'] = { fg = c.blue_1 },
+  ['@string.escape.regex'] = { fg = c.blue_1 },
+
   -- terraform
   ['@keyword.terraform'] = { fg = c.fg_1 },
   ['@punctuation.special.terraform'] = { fg = c.red_1 },
