@@ -86,7 +86,7 @@ Neovim config in lua.
   - [-] Make it as close to possible as upstream
   - [x] Make `cmp` lsp preview/doc correct
   - [x] Drop dark mode
-  - [ ] Switch to `api.nvim_set_hl`
+  - [x] Switch to `api.nvim_set_hl`
   - [ ] Make language specific overrides to closer match upstream:
     ```
     @comment.c
