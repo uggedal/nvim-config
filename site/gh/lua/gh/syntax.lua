@@ -113,6 +113,11 @@ return {
   ['@property.c'] = { fg = c.fg_1 },
   ['@type.c'] = { fg = c.fg_1 },
   ['@type.builtin.c'] = { fg = c.red_1 },
+
+  -- html
+  ['@constant.html'] = { fg = c.blue_1 },
+  ['@tag.attribute.html'] = { fg = c.blue_1 },
+  ['@operator.html'] = { fg = c.fg_1 },
   -- toml
   ['@type.toml'] = { fg = c.purple_1 },
   ['@property.toml'] = { fg = c.fg_1 },
