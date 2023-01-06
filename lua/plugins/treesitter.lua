@@ -51,6 +51,7 @@ return {
           'javascript',
           'json',
           'lua',
+          'rust',
           'python',
           'toml',
         },
