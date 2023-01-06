@@ -61,7 +61,7 @@ local c = {
 -- Editor
 --
 
-hl('Cursor', nil, c.fg_1) -- character under the cursor
+hl('Cursor', c.bg_0, c.fg_1) -- character under the cursor
 hl('CursorLine', nil, c.bg_1) -- vertical line under cursor
 
 hl('LineNr', c.fg_2) -- gutter line numbers
@@ -75,7 +75,7 @@ hl('ModeMsg', c.fg_1) -- mode message (-- INSERT --)
 hl('MsgArea', c.fg_1) -- area for messages and cmdline
 hl('MoreMsg', c.fg_1) -- text for pager prompt
 hl('Question', c.blue_1) -- prompts to continue with Enter or yes/no
-hl('Title', c.fg_1, nil, 'bold') -- tites from cmdline output
+hl('Title', c.fg_1, nil, 'bold') -- titles from cmdline output
 hl('ErrorMsg', c.red_1) -- command line error messages
 hl('WarningMsg', c.brown_1) -- warning messages
 hl('WildMenu', c.fg_1, c.yellow_2) -- current match in wildmenu completion
@@ -84,7 +84,7 @@ hl('TabLine') -- tab line
 hl('TabLineFill') -- tab line outside tabs
 hl('TabLineSel', nil, c.bg_2) -- tabline, current buffer
 
-hl('VertSplit', c.bg_2) -- column seperating vertical splits
+hl('VertSplit', c.bg_2) -- column separating vertical splits
 
 hl('Normal', c.fg_1, c.bg_0) -- normal text
 hl('NormalNC', c.fg_1, c.bg_0) -- normal text in non-current windows
@@ -96,8 +96,15 @@ hl('Search', nil, c.yellow_2) -- last search pattern
 hl('MatchParen', nil, c.yellow_2) -- current and matching bracket
 hl('Visual', nil, c.yellow_2) -- visual mode selection
 hl('Whitespace', c.fg_2) -- whitespace (with 'listchars')
+hl('Conceal', c.fg_1) -- placeholder chars substituted for concealed text
+hl('SpecialKey', c.fg_1) -- unprintable characters
 
-hl('Directory', c.blue_1) -- directory names in listsings
+hl('SpellBad', nil, nil, 'undercurl', c.red_1) -- unrecognized word
+hl('SpellCap', nil, nil, 'undercurl', c.brown_1) -- non-capitalized word
+hl('SpellLocal', nil, nil, 'undercurl', c.blue_1) -- used in other region
+hl('SpellRare', nil, nil, 'undercurl', c.fg_2) -- rarely used word
+
+hl('Directory', c.blue_1) -- directory names in listings
 
 hl('Folded', nil, c.bg_1) -- line for closed folds
 
@@ -106,66 +113,92 @@ hl('PMenuSel', nil, c.yellow_2) -- popup menu, selected item
 hl('PMenuSbar', nil, c.bg_2) -- popup menu, scrollbar
 hl('PMenuThumb', nil, c.fg_2) -- popup menu, scrollbar indicator
 
+hl('Error', c.red_1) -- erroneous constructs
+
 --
 -- Treesitter
 --
 
 hl('@variable', c.fg_1)
+li('Identifier', '@variable')
 hl('@field', c.fg_1)
 hl('@property', c.blue_1)
 hl('@label', c.fg_1)
+li('Label', '@label')
 
 hl('@type', c.brown_1)
+li('Type', '@type')
 hl('@type.definition', c.brown_1)
 hl('@type.builtin', c.fg_1)
 hl('@attribute', c.purple_1)
 hl('@constant', c.brown_1)
+li('Constant', '@constant')
 hl('@constant.builtin', c.blue_1)
 hl('@constant.macro', c.red_1)
 
 hl('@include', c.red_1)
+li('Include', '@include')
 hl('@keyword', c.red_1)
+li('Keyword', '@keyword')
+li('Statement', '@keyword')
 hl('@keyword.operator', c.blue_1)
 hl('@operator', c.blue_1)
+li('Operator', '@operator')
 hl('@conditional', c.red_1)
+li('Conditional', '@conditional')
 hl('@repeat', c.red_1)
+li('Repeat', '@repeat')
 hl('@exception', c.red_1)
+li('Exception', '@exception')
 -- Shebang and c preprocessor, style for the former:
 li('@preproc', '@comment')
+li('PreProc', '@preproc')
 -- c #define:
 hl('@define', c.red_1)
+li('Define', '@define')
 
 hl('@method', c.purple_1)
 hl('@method.call', c.purple_1)
 hl('@function', c.purple_1)
+li('Function', '@function')
 hl('@function.builtin', c.purple_1)
 hl('@function.call', c.purple_1)
 -- c preprocessor function name:
 hl('@function.macro', c.purple_1)
 hl('@parameter', c.fg_1)
 hl('@constructor', c.brown_1)
+li('Special', '@constructor')
 -- go package identifier and rust use identifier:
 hl('@namespace', c.fg_1)
 -- c extern/static/auto/register/inline:
 hl('@storageclass', c.red_1)
 
 hl('@number', c.blue_1)
+li('Number', '@number')
 hl('@float', c.blue_1)
+li('Float', '@float')
 hl('@string', c.blue_0)
+li('String', '@string')
 hl('@string.escape', c.blue_0)
 -- vim help keycode, toml dates:
 hl('@string.special', c.purple_1)
 hl('@character', c.blue_0)
+li('Character', '@character')
 hl('@character.special', c.red_1)
 hl('@boolean', c.blue_1)
+li('Boolean', '@boolean')
 
+hl('@punctuation', c.fg_1)
+li('Delimiter', '@punctuation')
 hl('@punctuation.bracket', c.fg_1)
 hl('@punctuation.special', c.fg_1)
 hl('@punctuation.delimiter', c.fg_1)
 
 hl('@comment', c.fg_2, nil, 'italic')
+li('Comment', '@comment')
 
 hl('@text.todo', c.fg_2, nil, 'bold')
+li('Todo', '@text.todo')
 hl('@text.todo.unchecked', c.fg_2)
 hl('@text.todo.checked', c.fg_2)
 hl('@text.todo.pending', c.green_1)
@@ -176,6 +209,8 @@ hl('@text.strong', nil, nil, 'bold')
 hl('@text.emphasis', nil, nil, 'italic')
 hl('@text.reference', c.purple_1)
 hl('@text.uri', c.blue_1)
+hl('@text.underline', nil, nil, 'underline')
+li('Underlined', '@text.underline')
 
 hl('@tag', c.green_1)
 
@@ -195,8 +230,12 @@ hl('@text.diff.delete', nil, c.red_bg)
 -- @punctuation
 -- @regexp
 -- @struct
+-- @text.underline
+-- @typeParameter
 
+--
 -- Diff
+--
 
 hl('DiffAdd', nil, c.green_bg)
 hl('DiffChange', nil, c.yellow_2)
@@ -210,7 +249,7 @@ hl('DiffNewFile', c.green_1)
 hl('DiffLine', c.purple_1)
 
 --
--- TODO: LSP
+-- TODO: LSP (should probably use non-Lsp prefixed variants)
 --
 
 -- li('LspReferenceText', 'CursorLine')
