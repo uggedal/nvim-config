@@ -172,6 +172,12 @@ return {
   ['@punctuation.bracket.regex'] = { fg = c.blue_1 },
   ['@string.escape.regex'] = { fg = c.blue_1 },
 
+  -- rust
+  ['@constant.builtin.rust'] = { fg = c.brown_1 },
+  ['@field.rust'] = { fg = c.blue_1 },
+  ['@operator.rust'] = { fg = c.fg_1 },
+  ['@type.qualifier.rust'] = { fg = c.red_1 },
+
   -- terraform
   ['@keyword.terraform'] = { fg = c.fg_1 },
   ['@punctuation.special.terraform'] = { fg = c.red_1 },
