@@ -104,6 +104,9 @@ return {
   ['@property.toml'] = { fg = c.fg_1 },
   ['@string.special.toml'] = { fg = c.blue_1 },
 
+  -- yaml
+  ['@field.yaml'] = { fg = c.green_1 },
+
   -- Currently unused in nvim highlights:
   -- @class
   -- @debug
