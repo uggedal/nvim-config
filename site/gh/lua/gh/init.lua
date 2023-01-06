@@ -8,6 +8,9 @@ end
 vim.o.termguicolors = true
 vim.g.colors_name = 'gh'
 
+-- Don't use cpp for c header files:
+vim.g.c_syntax_for_h = 1
+
 local function hl(hls)
   for group, opts in pairs(hls) do
     vim.api.nvim_set_hl(0, group, opts)
