@@ -7,7 +7,7 @@ return {
 
   -- Gitsigns
   GitSignsAddNr = { bg = c.green_bg },
-  GitSignsChangeNr = { bg = c.yellow_2 },
+  GitSignsChangeNr = { bg = c.yellow_bg_1 },
   GitSignsDeleteNr = { bg = c.red_bg },
 
   -- Which Key

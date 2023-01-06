@@ -18,7 +18,7 @@ return {
   Title = { fg = c.fg_1, bg = nil, bold = true }, -- titles from cmdline output
   ErrorMsg = { fg = c.red_1 }, -- command line error messages
   WarningMsg = { fg = c.brown_1 }, -- warning messages
-  WildMenu = { fg = c.fg_1, bg = c.yellow_2 }, -- current match in wildmenu completion
+  WildMenu = { fg = c.fg_1, bg = c.yellow_bg_1 }, -- current match in wildmenu completion
 
   TabLine = { bg = c.bg_0 }, -- tab line
   TabLineFill = { bg = c.bg_0 }, -- tab line outside tabs
@@ -31,10 +31,10 @@ return {
   NormalFloat = { bg = c.bg_0 }, -- normal text in floating windows
   NonText = { fg = c.fg_2 }, -- chars after buffer content and counter in Telescope
 
-  IncSearch = { bg = c.yellow_1 }, -- incremental search
-  Search = { bg = c.yellow_2 }, -- last search pattern
-  MatchParen = { bg = c.yellow_2 }, -- current and matching bracket
-  Visual = { bg = c.yellow_2 }, -- visual mode selection
+  IncSearch = { bg = c.yellow_bg_2 }, -- incremental search
+  Search = { bg = c.yellow_bg_1 }, -- last search pattern
+  MatchParen = { bg = c.yellow_bg_1 }, -- current and matching bracket
+  Visual = { bg = c.yellow_bg_1 }, -- visual mode selection
   Whitespace = { fg = c.fg_2 }, -- whitespace (with 'listchars')
   Conceal = { fg = c.fg_1 }, -- placeholder chars substituted for concealed text
   SpecialKey = { fg = c.fg_1 }, -- unprintable characters
@@ -49,14 +49,14 @@ return {
   Folded = { bg = c.bg_1 }, -- line for closed folds
 
   PMenu = { bg = c.bg_1 }, -- popup menu, normal item
-  PMenuSel = { bg = c.yellow_2 }, -- popup menu, selected item
+  PMenuSel = { bg = c.yellow_bg_1 }, -- popup menu, selected item
   PMenuSbar = { bg = c.bg_2 }, -- popup menu, scrollbar
   PMenuThumb = { bg = c.fg_2 }, -- popup menu, scrollbar indicator
 
   Error = { fg = c.red_1 }, -- erroneous constructs
 
   DiffAdd = { bg = c.green_bg },
-  DiffChange = { bg = c.yellow_2 },
+  DiffChange = { bg = c.yellow_bg_1 },
   DiffDelete = { bg = c.red_bg },
   DiffText = { bg = c.yellow_3, sp = c.blue_1, undercurl = true },
 
