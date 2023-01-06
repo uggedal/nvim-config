@@ -19,4 +19,7 @@ return {
 
   -- LSP Config
   LspInfoBorder = { fg = c.bg_2 },
+
+  -- Null Ls
+  NullLsInfoBorder = { fg = c.bg_2 },
 }

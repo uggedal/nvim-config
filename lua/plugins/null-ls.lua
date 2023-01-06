@@ -44,6 +44,7 @@ return {
 
     null_ls.setup({
       sources = null_ls_sources,
+      border = 'single',
       on_attach = lsp_on_attach,
     })
   end,
