@@ -62,7 +62,7 @@ return {
   ['@string'] = { fg = c.blue_0 },
   String = { link = '@string' },
   ['@string.escape'] = { fg = c.blue_0 },
-  -- vim help keycode, toml dates:
+  -- vim help keycode:
   ['@string.special'] = { fg = c.purple_1 },
   ['@character'] = { fg = c.blue_0 },
   Character = { link = '@character' },
@@ -98,6 +98,11 @@ return {
 
   ['@text.diff.add'] = { bg = c.green_bg },
   ['@text.diff.delete'] = { bg = c.red_bg },
+
+  -- toml
+  ['@type.toml'] = { fg = c.purple_1 },
+  ['@property.toml'] = { fg = c.fg_1 },
+  ['@string.special.toml'] = { fg = c.blue_1 },
 
   -- Currently unused in nvim highlights:
   -- @class
