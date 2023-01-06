@@ -8,6 +8,7 @@ return {
   CursorLineNr = { bg = c.bg_1 }, -- gutter line number for current line
   ColorColumn = { bg = c.bg_1 }, -- columns set with 'colorcolumn'
   SignColumn = { fg = c.fg_2 }, -- gutter column showing signs
+  FoldColumn = { fg = c.fg_2 }, -- gutter column showing signs
 
   StatusLine = { fg = c.fg_1, bg = c.bg_1 }, -- status line of current window
   StatusLineNC = { fg = c.fg_2, bg = c.bg_1 }, -- status line of non-current window
