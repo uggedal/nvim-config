@@ -32,9 +32,19 @@ return {
       null_ls.builtins.formatting.djhtml,
     }
 
+    local lsp_on_attach = function(client, bufnr)
+      require('lsp').lsp_on_attach(client, bufnr)
+
+      vim.keymap.set('n', '<leader>ln', ':NullLsInfo<cr>', {
+        desc = 'null-ls info',
+        buffer = bufnr,
+        silent = true,
+      })
+    end
+
     null_ls.setup({
       sources = null_ls_sources,
-      on_attach = require('lsp').lsp_on_attach,
+      on_attach = lsp_on_attach,
     })
   end,
 }
