@@ -137,6 +137,11 @@ return {
   -- gomod
   ['@string.gomod'] = { fg = c.blue_1 },
 
+  -- help
+  ['@label.help'] = { fg = c.red_1 },
+  ['@parameter.help'] = { fg = c.purple_1 },
+  ['@text.reference.help'] = { fg = c.blue_1 },
+
   -- javascript
   ['@keyword.operator.javascript'] = { fg = c.red_1 },
   ['@tag.attribute.javascript'] = { fg = c.blue_1 },
