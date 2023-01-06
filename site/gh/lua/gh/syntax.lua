@@ -114,6 +114,8 @@ return {
   ['@type.c'] = { fg = c.fg_1 },
   ['@type.builtin.c'] = { fg = c.red_1 },
 
+  -- comment
+  ['@constant.comment'] = { link = '@comment' },
   -- css
   ['@type.css'] = { fg = c.fg_1 },
   ['@type.definition.css'] = { fg = c.blue_1 },
