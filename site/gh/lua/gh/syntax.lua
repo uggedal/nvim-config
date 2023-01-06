@@ -127,6 +127,13 @@ return {
   ['@variable.builtin.gitattributes'] = { fg = c.brown_1 },
   ['@string.gitattributes'] = { fg = c.blue_1 },
 
+  -- go
+  ['@constant.go'] = { fg = c.fg_1 },
+  ['@field.go'] = { fg = c.blue_1 },
+  ['@method.go'] = { fg = c.purple_1 },
+  ['@type.go'] = { fg = c.fg_1 },
+  ['@type.definition.go'] = { fg = c.fg_1 },
+
   -- javascript
   ['@keyword.operator.javascript'] = { fg = c.red_1 },
   ['@tag.attribute.javascript'] = { fg = c.blue_1 },
