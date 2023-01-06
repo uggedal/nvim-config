@@ -37,6 +37,8 @@ return {
       end,
     })
 
+    require('lspconfig.ui.windows').default_options.border = 'single'
+
     lspconfig.gopls.setup({
       on_attach = lsp_on_attach,
       capabilities = lsp_capabilities,

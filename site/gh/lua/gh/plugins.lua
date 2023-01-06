@@ -15,4 +15,8 @@ return {
   WhichKeyGroup = { fg = c.fg_1 },
   WhichKeySeparator = { fg = c.fg_1 },
   WhichKeyDesc = { fg = c.fg_1 },
+  WhichKeyFloat = { bg = c.bg_1 },
+
+  -- LSP Config
+  LspInfoBorder = { fg = c.bg_2 },
 }
