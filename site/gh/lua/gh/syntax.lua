@@ -99,6 +99,11 @@ return {
   ['@text.diff.add'] = { bg = c.green_bg },
   ['@text.diff.delete'] = { bg = c.red_bg },
 
+  -- bash
+  ['@constant.bash'] = { fg = c.fg_1 },
+  ['@function.builtin.bash'] = { fg = c.blue_1 },
+  ['@function.call.bash'] = { fg = c.blue_1 },
+
   -- toml
   ['@type.toml'] = { fg = c.purple_1 },
   ['@property.toml'] = { fg = c.fg_1 },
