@@ -28,7 +28,7 @@ return {
 
   Normal = { fg = c.fg_1, bg = c.bg_0 }, -- normal text
   NormalNC = { fg = c.fg_1, bg = c.bg_0 }, -- normal text in non-current windows
-  NormalFloat = { bg = c.bg_1 }, -- normal text in floating windows
+  NormalFloat = { bg = c.bg_0 }, -- normal text in floating windows
   NonText = { fg = c.fg_2 }, -- chars after buffer content and counter in Telescope
 
   IncSearch = { bg = c.yellow_1 }, -- incremental search
