@@ -116,6 +116,7 @@ return {
 
   -- comment
   ['@constant.comment'] = { link = '@comment' },
+
   -- css
   ['@type.css'] = { fg = c.fg_1 },
   ['@type.definition.css'] = { fg = c.blue_1 },
