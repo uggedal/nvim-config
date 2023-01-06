@@ -25,6 +25,9 @@ return {
       })
     end
 
+    -- Disable semantic tokens. Too slow and interferes with treesitter styles:
+    client.server_capabilities.semanticTokensProvider = nil
+
     vim.keymap.set(
       'n',
       'gd',
