@@ -114,6 +114,10 @@ return {
   ['@type.c'] = { fg = c.fg_1 },
   ['@type.builtin.c'] = { fg = c.red_1 },
 
+  -- css
+  ['@type.css'] = { fg = c.fg_1 },
+  ['@type.definition.css'] = { fg = c.blue_1 },
+
   -- html
   ['@constant.html'] = { fg = c.blue_1 },
   ['@tag.attribute.html'] = { fg = c.blue_1 },
