@@ -151,6 +151,16 @@ return {
   -- json
   ['@label.json'] = { fg = c.green_1 },
 
+  -- lua
+  ['@constant.lua'] = { fg = c.fg_1 },
+  ['@constructor.lua'] = { fg = c.fg_1 },
+  ['@function.lua'] = { fg = c.blue_1 },
+  ['@function.builtin.lua'] = { fg = c.blue_1 },
+  ['@function.call.lua'] = { fg = c.blue_1 },
+  ['@keyword.operator.lua'] = { fg = c.red_1 },
+  ['@method.call.lua'] = { fg = c.blue_1 },
+  ['@operator.lua'] = { fg = c.red_1 },
+
   -- terraform
   ['@keyword.terraform'] = { fg = c.fg_1 },
   ['@punctuation.special.terraform'] = { fg = c.red_1 },
