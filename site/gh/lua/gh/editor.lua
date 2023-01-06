@@ -65,4 +65,9 @@ return {
   DiffFile = { fg = c.blue_1 },
   DiffNewFile = { fg = c.green_1 },
   DiffLine = { fg = c.purple_1 },
+
+  DiagnosticError = { fg = c.red_1 },
+  DiagnosticWarn = { fg = c.brown_1 },
+  DiagnosticInfo = { fg = c.blue_1 },
+  DiagnosticHint = { fg = c.green_1 },
 }
