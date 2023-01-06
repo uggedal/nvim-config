@@ -118,11 +118,6 @@ return {
   ['@type.css'] = { fg = c.fg_1 },
   ['@type.definition.css'] = { fg = c.blue_1 },
 
-  -- html
-  ['@constant.html'] = { fg = c.blue_1 },
-  ['@tag.attribute.html'] = { fg = c.blue_1 },
-  ['@operator.html'] = { fg = c.fg_1 },
-
   -- gitattributes
   ['@variable.builtin.gitattributes'] = { fg = c.brown_1 },
   ['@string.gitattributes'] = { fg = c.blue_1 },
@@ -141,6 +136,11 @@ return {
   ['@label.help'] = { fg = c.red_1 },
   ['@parameter.help'] = { fg = c.purple_1 },
   ['@text.reference.help'] = { fg = c.blue_1 },
+
+  -- html
+  ['@constant.html'] = { fg = c.blue_1 },
+  ['@tag.attribute.html'] = { fg = c.blue_1 },
+  ['@operator.html'] = { fg = c.fg_1 },
 
   -- javascript
   ['@keyword.operator.javascript'] = { fg = c.red_1 },
