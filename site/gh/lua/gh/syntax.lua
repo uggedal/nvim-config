@@ -187,6 +187,11 @@ return {
   ['@property.toml'] = { fg = c.fg_1 },
   ['@string.special.toml'] = { fg = c.blue_1 },
 
+  -- vim
+  ['@constant.vim'] = { fg = c.blue_1 },
+  ['@namespace.vim'] = { fg = c.red_1 },
+  ['@operator.vim'] = { fg = c.red_1 },
+
   -- yaml
   ['@field.yaml'] = { fg = c.green_1 },
 
