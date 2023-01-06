@@ -162,6 +162,10 @@ return {
   ['@method.call.lua'] = { fg = c.blue_1 },
   ['@operator.lua'] = { fg = c.red_1 },
 
+  -- make
+  ['@function.builtin.make'] = { fg = c.blue_1 },
+  ['@operator.make'] = { fg = c.fg_1 },
+
   -- terraform
   ['@keyword.terraform'] = { fg = c.fg_1 },
   ['@punctuation.special.terraform'] = { fg = c.red_1 },
