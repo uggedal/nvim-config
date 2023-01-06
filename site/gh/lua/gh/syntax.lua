@@ -134,6 +134,9 @@ return {
   ['@type.go'] = { fg = c.fg_1 },
   ['@type.definition.go'] = { fg = c.fg_1 },
 
+  -- gomod
+  ['@string.gomod'] = { fg = c.blue_1 },
+
   -- javascript
   ['@keyword.operator.javascript'] = { fg = c.red_1 },
   ['@tag.attribute.javascript'] = { fg = c.blue_1 },
