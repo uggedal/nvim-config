@@ -12,8 +12,18 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    local lsp_on_attach = require('lsp').lsp_on_attach
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    require('lspconfig.ui.windows').default_options.border = 'single'
+
+    local lsp_on_attach = function(client, bufnr)
+      require('lsp').lsp_on_attach(client, bufnr)
+
+      vim.keymap.set('n', '<leader>li', require('lspconfig.ui.lspinfo'), {
+        desc = 'lsp server info',
+        buffer = bufnr,
+      })
+    end
 
     lspconfig.jedi_language_server.setup({
       on_attach = lsp_on_attach,
@@ -36,8 +46,6 @@ return {
         end
       end,
     })
-
-    require('lspconfig.ui.windows').default_options.border = 'single'
 
     lspconfig.gopls.setup({
       on_attach = lsp_on_attach,
