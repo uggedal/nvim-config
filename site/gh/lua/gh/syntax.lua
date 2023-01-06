@@ -146,6 +146,10 @@ return {
   ['@keyword.operator.javascript'] = { fg = c.red_1 },
   ['@tag.attribute.javascript'] = { fg = c.blue_1 },
 
+  -- terraform
+  ['@keyword.terraform'] = { fg = c.fg_1 },
+  ['@punctuation.special.terraform'] = { fg = c.red_1 },
+
   -- toml
   ['@type.toml'] = { fg = c.purple_1 },
   ['@property.toml'] = { fg = c.fg_1 },
