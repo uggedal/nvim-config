@@ -85,13 +85,15 @@ Neovim config in lua.
 - [ ] Find alternative to `buftabline` as it's abandoned upstream:
   - Potentially [cybu][cybu].
 - [ ] Plugins to consider:
-  - [ ] [telescope-frequency][telescope-frequency].
-  - [ ] [telescope-undo][telescope-undo].
-  - [ ] [neogit][neogit].
-  - [ ] [nvim-surround][nvim-surround].
-  - [ ] [vim-illuminate][vim-illuminate].
-  - [ ] [nvim-treesitter-textobjects][nvim-treesitter-textobjects].
-  - [ ] [nvim-treesitter-textsubjects][nvim-treesitter-textsubjects].
+  - [ ] [telescope-frequency]
+  - [ ] [telescope-undo]
+  - [ ] [neogit]
+  - [ ] [nvim-surround]
+  - [ ] [vim-illuminate]
+  - [ ] [nvim-treesitter-textobjects]
+  - [ ] [nvim-treesitter-textsubjects]
+  - [ ] [nvim-navic]
+  - [ ] [telescope-heading]
 - [ ] Check [kickstart.nvim][kickstart.nvim].
 - [ ] `journal`: create calendar (use/reuse
       [neorg implementation](neorg-calendar)).
@@ -107,6 +109,8 @@ Neovim config in lua.
 [vim-illuminate]: https://github.com/RRethy/vim-illuminate
 [nvim-treesitter-textobjects]: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
+[nvim-navic]: https://github.com/SmiteshP/nvim-navic
+[telescope-heading]: https://github.com/crispgm/telescope-heading.nvim
 [kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
