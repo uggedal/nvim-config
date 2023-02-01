@@ -94,6 +94,7 @@ Neovim config in lua.
   - [ ] [nvim-treesitter-textsubjects]
   - [ ] [nvim-navic]
   - [ ] [telescope-heading]
+  - [ ] [telescope-ui-select]
 - [ ] Check [kickstart.nvim][kickstart.nvim].
 - [ ] `journal`: create calendar (use/reuse
       [neorg implementation](neorg-calendar)).
@@ -111,6 +112,7 @@ Neovim config in lua.
 [nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
 [nvim-navic]: https://github.com/SmiteshP/nvim-navic
 [telescope-heading]: https://github.com/crispgm/telescope-heading.nvim
+[telescope-ui-select]: https://github.com/nvim-telescope/telescope-ui-select.nvim
 [kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
 [neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
 [clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
