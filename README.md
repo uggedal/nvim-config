@@ -72,10 +72,10 @@ Neovim config in lua.
   - `,lr`: rename.
   - `,lc`: code action.
   - `K`: show symbol info.
-- [lspconfig](lua/plugins/lspconfig.lua) setup for `jedi`, `gopls` and
-  `sumneko`.
+- [lspconfig](lua/plugins/lspconfig.lua) setup for `jedi`, `ruff-lsp` `gopls`
+  and `sumneko`.
 - [null-ls](lua/plugins/null-ls.lua) with:
-  - Python formatting and diagnostics: `black`, and `ruff` and `mypy`.
+  - Python formatting and diagnostics: `black` and `mypy`.
   - Lua formatting: `stylua`.
   - Markdown formatting: `deno`.
   - Shell formatting and diagnostics: `shfmt` and `shellcheck`.
