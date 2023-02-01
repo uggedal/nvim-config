@@ -70,6 +70,7 @@ Neovim config in lua.
 - [lsp](lua/plugins/lsp.lua) with mappings for:
   - `gd`: go to definition.
   - `,lr`: rename.
+  - `,lc`: code action.
   - `K`: show symbol info.
 - [lspconfig](lua/plugins/lspconfig.lua) setup for `jedi`, `gopls` and
   `sumneko`.
