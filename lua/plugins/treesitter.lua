@@ -65,7 +65,7 @@ return {
     local md_inline_files =
       ts_query.get_query_files('markdown_inline', 'highlights')
 
-    md_inline_mod = {}
+    local md_inline_mod = {}
 
     if #md_inline_files == 1 then
       for line in io.lines(md_inline_files[1]) do
