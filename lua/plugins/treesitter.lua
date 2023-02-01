@@ -62,8 +62,6 @@ return {
 
     local ts_query = require('vim.treesitter.query')
 
-    local md_inline_hl = ts_query.get_query('markdown_inline', 'highlights')
-
     local md_inline_files =
       ts_query.get_query_files('markdown_inline', 'highlights')
 
