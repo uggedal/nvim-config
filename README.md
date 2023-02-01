@@ -42,12 +42,15 @@ Neovim config in lua.
   (`- [-]`) and moved (`- [>]`) todo items.
 - `nvim-yati` for better `treesitter` indent (especially Python).
 - `treesitter/playground` for debugging tree-sitter queries.
-- [telescope](lua/plugins/telescope.lua) with `telescope-fzf-native` for
-  finding files (`<C-p>`) and live grep (`<C-g`). Also used for git operations:
-  - `,gl`: list commits of current file.
-  - `,gL`: list all commits.
+- [telescope](lua/plugins/telescope.lua) with `telescope-fzf-native` with
+  mappings for:
+  - `<C-p>`: finding files
+  - `<C-g`: live grep
+  - `,gl`: list git commits of current file.
+  - `,gL`: list all git commits.
   - `,gB`: list git branches.
   - `,gs`: show git status
+  - `gr`: list lsp references
 - [buftabline](lua/plugins[buftabline.lua) for buffer list in the tabline with
   mappings `,1` to `,9` to switch to buffer with corresponding index.
 - [gitsigns](lua/plugins/gitsigns.lua) showing diffs in number column and
@@ -66,7 +69,7 @@ Neovim config in lua.
 - `peek` for live markdown previews using `:PeekOpen` and `:PeekClose`.
 - [lsp](lua/plugins/lsp.lua) with mappings for:
   - `gd`: go to definition.
-  - `gr`: rename.
+  - `,lr`: rename.
   - `K`: show symbol info.
 - [lspconfig](lua/plugins/lspconfig.lua) setup for `jedi`, `gopls` and
   `sumneko`.
