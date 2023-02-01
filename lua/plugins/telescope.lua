@@ -67,7 +67,7 @@ return {
       desc = 'git status',
     },
   },
-  config = function(telescope)
+  config = function()
     local telescope = require('telescope')
 
     telescope.setup({
