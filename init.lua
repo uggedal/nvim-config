@@ -36,6 +36,9 @@ require('lazy').setup('plugins', {
   dev = {
     path = '~/.config/nvim/site',
   },
+  ui = {
+    border = 'rounded',
+  },
 })
 
 vim.o.background = 'light'
