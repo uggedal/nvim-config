@@ -21,6 +21,7 @@ return {
         -- Disabled until generation from grammar is not needed: 'gitignore',
         'go',
         'gomod',
+        'gosum',
         'help',
         'html',
         'javascript',
