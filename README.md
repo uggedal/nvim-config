@@ -73,7 +73,7 @@ Neovim config in lua.
   - `,lc`: code action.
   - `K`: show symbol info.
 - [lspconfig](lua/plugins/lspconfig.lua) setup for `jedi`, `ruff-lsp` `gopls`
-  and `sumneko`.
+  and `lua-language-server`.
 - [null-ls](lua/plugins/null-ls.lua) with:
   - Python formatting and diagnostics: `black` and `mypy`.
   - Lua formatting: `stylua`.
