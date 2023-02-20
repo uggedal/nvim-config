@@ -18,7 +18,7 @@ return {
   config = function()
     local cmp = require('cmp')
     cmp.setup({
-      mapping = cmp.mapping.preset.insert({
+      mapping = {
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -34,7 +34,7 @@ return {
             cmp.select_prev_item()
           end
         end, { 'i', 's' }),
-      }),
+      },
 
       completion = {
         autocomplete = false,
