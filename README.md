@@ -80,7 +80,6 @@ Neovim config in lua.
   - Markdown formatting: `deno`.
   - Shell formatting and diagnostics: `shfmt` and `shellcheck`.
   - Go formatting: `gofmt`.
-  - Django/Jinja2 formatting: `djhtml`.
 - [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for
   `path`, `lsp` and `buffer` sources.
 
