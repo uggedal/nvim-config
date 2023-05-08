@@ -38,29 +38,7 @@ return {
       })
     end
 
-    lspconfig.jedi_language_server.setup({
-      on_attach = lsp_on_attach,
-      capabilities = lsp_capabilities,
-
-      on_new_config = function(new_config, root_dir)
-        local venv_dir = nil
-        if root_dir == vim.fs.normalize('~/src/infra') then
-          venv_dir = vim.fs.normalize('~/.local/pipx/venvs/pyinfra')
-        elseif vim.fn.isdirectory(root_dir .. '/venv') ~= 0 then
-          venv_dir = './venv'
-        end
-
-        if venv_dir ~= nil then
-          new_config.init_options = {
-            workspace = {
-              environmentPath = venv_dir .. '/bin/python3',
-            },
-          }
-        end
-      end,
-    })
-
-    lspconfig.ruff_lsp.setup({
+    lspconfig.pylsp.setup({
       on_attach = lsp_on_attach,
       capabilities = lsp_capabilities,
     })

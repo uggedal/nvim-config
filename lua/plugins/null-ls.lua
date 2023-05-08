@@ -8,14 +8,6 @@ return {
     local null_ls = require('null-ls')
 
     local null_ls_sources = {
-      null_ls.builtins.formatting.black,
-      null_ls.builtins.diagnostics.mypy.with({
-        command = 'venv/bin/mypy',
-        condition = function(utils)
-          return utils.root_has_file('venv/bin/mypy')
-        end,
-      }),
-
       null_ls.builtins.formatting.stylua,
 
       null_ls.builtins.formatting.deno_fmt.with({
