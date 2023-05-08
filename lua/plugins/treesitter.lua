@@ -34,7 +34,7 @@ return {
         'query',
         'regex',
         'rust',
-	-- Needs generation from grammar: 'sql',
+        -- Needs generation from grammar: 'sql',
         'terraform',
         'toml',
         'vim',
@@ -64,8 +64,7 @@ return {
 
     local ts_query = require('vim.treesitter.query')
 
-    local md_inline_files =
-      ts_query.get_files('markdown_inline', 'highlights')
+    local md_inline_files = ts_query.get_files('markdown_inline', 'highlights')
 
     local md_inline_mod = {}
 
