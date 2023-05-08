@@ -18,6 +18,7 @@ return {
         'git_rebase',
         'gitattributes',
         'gitcommit',
+        'git_config',
         -- Needs generation from grammar: 'gitignore',
         'go',
         'gomod',
