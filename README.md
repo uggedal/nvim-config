@@ -58,7 +58,7 @@ Neovim config in lua.
   - `[h`: go to previous diff hunk.
   - `]h`: go to previous diff hunk.
 - `nvim-colorizer` to highlight hex color definitions.
-- `nvim-comment` with `nvim-ts-context-commentstring` for setting correct
+- `mini.comment` with `nvim-ts-context-commentstring` for setting correct
   comment type depending on context.
 - `nvim-lastplace` for opening files at last edit position.
 - `mkdir` for creating missing directories when saving files.
