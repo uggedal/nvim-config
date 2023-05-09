@@ -44,8 +44,6 @@ map(
   { desc = 'edit in cwd' }
 )
 
-map('n', '<leader>i', ':set invpaste<CR>', { desc = 'toggle paste mode' })
-
 map(
   'n',
   '<leader>gc',

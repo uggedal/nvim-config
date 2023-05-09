@@ -15,7 +15,6 @@ Neovim config in lua.
   - `,p`: previous buffer.
   - `,n`: next buffer.
   - `,d`: delete buffer.
-  - `,i`: toggle paste mode.
   - `,gc`: git commit and sync.
   - `,e`: edit in working directory of current file.
   - `[d`: previous diagnostic.
