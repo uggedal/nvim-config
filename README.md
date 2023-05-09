@@ -81,39 +81,4 @@ Neovim config in lua.
 - [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for
   `path`, `lsp` and `buffer` sources.
 
-## TODO
-
-- [ ] Find alternative to `buftabline` as it's abandoned upstream:
-  - Potentially [cybu][cybu].
-- [ ] Plugins to consider:
-  - [ ] [telescope-frequency]
-  - [ ] [telescope-undo]
-  - [ ] [neogit]
-  - [ ] [nvim-surround]
-  - [ ] [vim-illuminate]
-  - [ ] [nvim-treesitter-textobjects]
-  - [ ] [nvim-treesitter-textsubjects]
-  - [ ] [nvim-navic]
-  - [ ] [telescope-heading]
-  - [ ] [telescope-ui-select]
-- [ ] Check [kickstart.nvim][kickstart.nvim].
-- [ ] `journal`: create calendar (use/reuse
-      [neorg implementation](neorg-calendar)).
-- [ ] Create [clipboard-image][clipboard-image] alternative using
-      `screencapture -i %s`.
-
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
-[cybu]: https://github.com/ghillb/cybu.nvim
-[telescope-frequency]: https://github.com/nvim-telescope/telescope-frecency.nvim
-[telescope-undo]: https://github.com/debugloop/telescope-undo.nvim
-[neogit]: https://github.com/TimUntersberger/neogit
-[nvim-surround]: https://github.com/kylechui/nvim-surround
-[vim-illuminate]: https://github.com/RRethy/vim-illuminate
-[nvim-treesitter-textobjects]: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-[nvim-treesitter-textsubjects]: https://github.com/RRethy/nvim-treesitter-textsubjects
-[nvim-navic]: https://github.com/SmiteshP/nvim-navic
-[telescope-heading]: https://github.com/crispgm/telescope-heading.nvim
-[telescope-ui-select]: https://github.com/nvim-telescope/telescope-ui-select.nvim
-[kickstart.nvim]: https://github.com/nvim-lua/kickstart.nvim
-[neorg-calendar]: https://github.com/nvim-neorg/neorg/pull/505
-[clipboard-image]: https://github.com/ekickx/clipboard-image.nvim
