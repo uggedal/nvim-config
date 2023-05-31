@@ -88,13 +88,6 @@ vim.api.nvim_create_autocmd('FileType', {
     'yaml',
   },
 })
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function()
-    vim.opt_local.spelllang = { 'en', 'nb' }
-  end,
-  group = spelling,
-  pattern = { 'markdown' },
-})
 
 -- Diagnostics:
 vim.diagnostic.config({

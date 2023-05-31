@@ -25,14 +25,6 @@ Neovim config in lua.
 
 - [gh](lua/gh.lua): custom GitHub based color scheme (slight differences from
   the popular [projekt0n/github-nvim-theme][gh-theme]).
-- [journal](lua/journal.lua): markdown based daily journal with task migration:
-  - `,jt`: open or create journal for today.
-  - `,jm`: open or create journal for tomorrow.
-  - `,jf`: find a journal entry.
-- [todo](lua/todo.lua): TODO item handler:
-  - `,to`: find open or pending TODO items.
-  - `,td`: find done TODO items.
-  - `,tm`: find migrated TODO items.
 
 ## Other plugins
 
@@ -40,7 +32,6 @@ Neovim config in lua.
 - [treesitter](lua/plugins/treesitter.lua) with custom queries for pending
   (`- [-]`) and moved (`- [>]`) todo items.
 - `nvim-yati` for better `treesitter` indent (especially Python).
-- `treesitter/playground` for debugging tree-sitter queries.
 - [telescope](lua/plugins/telescope.lua) with `telescope-fzf-native` with
   mappings for:
   - `<C-p>`: finding files
@@ -62,10 +53,6 @@ Neovim config in lua.
   comment type depending on context.
 - `nvim-lastplace` for opening files at last edit position.
 - `mkdir` for creating missing directories when saving files.
-- [mkdnflow](lua/plugins/mkdnflow.lua) with most modules disabled except for
-  intelligent list continuation with `Enter` and todo state manipulation
-  (`C-Space`).
-- `peek` for live markdown previews using `:PeekOpen` and `:PeekClose`.
 - [lsp](lua/plugins/lsp.lua) with mappings for:
   - `gd`: go to definition.
   - `,lr`: rename.

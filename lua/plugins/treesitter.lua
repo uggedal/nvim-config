@@ -61,48 +61,5 @@ return {
       yati = { enable = true },
       context_commentstring = { enable = true, enable_autocmd = false },
     })
-
-    local ts_query = require('vim.treesitter.query')
-
-    local md_inline_files = ts_query.get_files('markdown_inline', 'highlights')
-
-    local md_inline_mod = {}
-
-    if #md_inline_files == 1 then
-      for line in io.lines(md_inline_files[1]) do
-        -- Remove conceal of shortcut links, also conceals pending todo: - [-]
-        if line:match('^; Conceal shortcut links') ~= nil then
-          break
-        end
-        table.insert(md_inline_mod, line)
-      end
-    end
-
-    -- -- Add pending/moved captures:
-    table.insert(
-      md_inline_mod,
-      [[
-      (shortcut_link
-        (link_text) @text.todo.pending
-        (#eq? @text.todo.pending "-")
-      ) @text.todo.pending
-    ]]
-    )
-
-    table.insert(
-      md_inline_mod,
-      [[
-      (shortcut_link
-        (link_text) @text.todo.moved
-        (#eq? @text.todo.moved ">")
-      ) @text.todo.moved
-    ]]
-    )
-
-    ts_query.set(
-      'markdown_inline',
-      'highlights',
-      table.concat(md_inline_mod, '\n')
-    )
   end,
 }
