@@ -5,11 +5,13 @@ return {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = function()
+    require('ts_context_commentstring').setup {
+      enable_autocmd = false,
+    }
     require('mini.comment').setup({
-      hooks = {
-        pre = function()
-          local ts_cc = require('ts_context_commentstring.internal')
-          ts_cc.update_commentstring({})
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
         end,
       },
     })
