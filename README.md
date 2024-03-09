@@ -62,7 +62,6 @@ Neovim config in lua.
   `lua-language-server`.
 - [null-ls](lua/plugins/null-ls.lua) with:
   - Lua formatting: `stylua`.
-  - Markdown formatting: `deno`.
   - Shell formatting and diagnostics: `shfmt` and `shellcheck`.
   - Go formatting: `gofmt`.
 - [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for

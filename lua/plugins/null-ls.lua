@@ -10,11 +10,6 @@ return {
     local null_ls_sources = {
       null_ls.builtins.formatting.stylua,
 
-      null_ls.builtins.formatting.deno_fmt.with({
-        filetypes = { 'markdown' },
-        extra_args = { '--options-line-width', '79' },
-      }),
-
       null_ls.builtins.formatting.shfmt,
       null_ls.builtins.diagnostics.shellcheck,
 
