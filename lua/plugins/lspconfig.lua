@@ -48,11 +48,6 @@ return {
       capabilities = lsp_capabilities,
     })
 
-    lspconfig.gopls.setup({
-      on_attach = lsp_on_attach,
-      capabilities = lsp_capabilities,
-    })
-
     lspconfig.lua_ls.setup({
       on_attach = lsp_on_attach,
       capabilities = lsp_capabilities,
