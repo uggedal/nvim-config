@@ -4,7 +4,6 @@ return {
   -- event = 'BufReadPost',
   lazy = false,
   dependencies = {
-    'yioneko/nvim-yati',
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = function()
@@ -44,21 +43,7 @@ return {
       highlight = { enable = true },
       indent = {
         enable = true,
-        -- Disable indent for languages handled by yati:
-        disable = {
-          'c',
-          'cpp',
-          'css',
-          'html',
-          'javascript',
-          'json',
-          'lua',
-          'rust',
-          'python',
-          'toml',
-        },
       },
-      yati = { enable = true },
     })
   end,
 }

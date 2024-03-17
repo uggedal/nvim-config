@@ -31,7 +31,6 @@ Neovim config in lua.
 - [which-key](lua/plugins/which-key.lua) with spelling suggestions (`z=`).
 - [treesitter](lua/plugins/treesitter.lua) with custom queries for pending
   (`- [-]`) and moved (`- [>]`) todo items.
-- `nvim-yati` for better `treesitter` indent (especially Python).
 - [telescope](lua/plugins/telescope.lua) with `telescope-fzf-native` with
   mappings for:
   - `<C-p>`: finding files
