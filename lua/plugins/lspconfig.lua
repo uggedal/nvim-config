@@ -48,6 +48,12 @@ return {
       capabilities = lsp_capabilities,
     })
 
+    lspconfig.denols.setup({
+      on_attach = lsp_on_attach,
+      capabilities = lsp_capabilities,
+      filetypes = { 'markdown' },
+    })
+
     lspconfig.lua_ls.setup({
       on_attach = lsp_on_attach,
       capabilities = lsp_capabilities,

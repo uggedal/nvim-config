@@ -7,8 +7,7 @@ Neovim config in lua.
 - [settings](lua/settings.lua): tweak built-in settings.
 - [languages](lua/languages.lua): spaces vs tab indent setup, text wrapping,
   line numbering and conceal for different languages.
-- [keymaps](lua/keymaps.lua): definition and re-definition of built-in
-  mappings:
+- [keymaps](lua/keymaps.lua): definition and re-definition of built-in mappings:
   - `<C-l>`: clear screen (original) and clear search highlight.
   - `,cp`: paste from system clipboard.
   - `,cy`: yank to system clipboard (visual mode).
@@ -56,12 +55,12 @@ Neovim config in lua.
   - `,lr`: rename.
   - `,lc`: code action.
   - `K`: show symbol info.
-- [lspconfig](lua/plugins/lspconfig.lua) setup for `pylsp`, `bashls` and
+- [lspconfig](lua/plugins/lspconfig.lua) setup for `pylsp`, `bashls`, `deno` and
   `lua-language-server`.
 - [null-ls](lua/plugins/null-ls.lua) with:
   - Lua formatting: `stylua`.
   - Shell formatting and diagnostics: `shfmt` and `shellcheck`.
-- [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for
-  `path`, `lsp` and `buffer` sources.
+- [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for `path`,
+  `lsp` and `buffer` sources.
 
 [gh-theme]: https://github.com/projekt0n/github-nvim-theme
