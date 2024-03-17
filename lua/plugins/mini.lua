@@ -1,5 +1,6 @@
 return {
-  'echasnovski/mini.comment',
+  'echasnovski/mini.nvim',
+  version = '*',
   event = 'VeryLazy',
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
@@ -15,6 +16,10 @@ return {
             or vim.bo.commentstring
         end,
       },
+    })
+
+    require('mini.tabline').setup({
+      show_icons = false,
     })
   end,
 }
