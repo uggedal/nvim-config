@@ -55,11 +55,12 @@ Neovim config in lua.
   - `,lr`: rename.
   - `,lc`: code action.
   - `K`: show symbol info.
-- [lspconfig](lua/plugins/lspconfig.lua) setup for `pylsp`, `bashls`, `deno` and
-  `lua-language-server`.
+- [lspconfig](lua/plugins/lspconfig.lua) setup for `pylsp`, `bashls`, `deno`,
+  `gopls` and `lua-language-server`.
 - [null-ls](lua/plugins/null-ls.lua) with:
   - Lua formatting: `stylua`.
   - Shell formatting and diagnostics: `shfmt` and `shellcheck`.
+  - Go formatting: `gofmt`.
 - [cmp](lua/plugins/cmp.lua) for non-automatic completion with `Tab` for `path`,
   `lsp` and `buffer` sources.
 
