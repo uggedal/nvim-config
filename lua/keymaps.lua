@@ -51,6 +51,4 @@ map(
   { desc = 'git commit and sync' }
 )
 
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 map('n', 'gl', vim.diagnostic.open_float, { desc = 'view diagnostic' })

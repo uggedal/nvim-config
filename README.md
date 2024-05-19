@@ -16,8 +16,6 @@ Neovim config in lua.
   - `,d`: delete buffer.
   - `,gc`: git commit and sync.
   - `,e`: edit in working directory of current file.
-  - `[d`: previous diagnostic.
-  - `]d`: next diagnostic.
   - `gl`: view diagnostic.
 
 ## Custom plugins
