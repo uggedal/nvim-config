@@ -3,9 +3,6 @@ return {
   build = ':TSUpdate',
   -- event = 'BufReadPost',
   lazy = false,
-  dependencies = {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-  },
   config = function()
     require('nvim-treesitter.configs').setup({
       ensure_installed = {
