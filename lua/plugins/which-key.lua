@@ -13,27 +13,16 @@ return {
       },
     })
 
-    for _, m in ipairs({ 'n', 'v' }) do
-      wk.register({
-        ['<leader>c'] = {
-          name = 'clipboard',
-        },
-      }, { mode = m })
-    end
+    wk.add({
+      { '<leader>c', group = 'clipboard' },
+      { mode = { 'n', 'v' } },
+    })
 
-    wk.register({
-      ['<leader>g'] = {
-        name = 'git',
-      },
-      ['<leader>l'] = {
-        name = 'lsp',
-      },
-      ['<leader>j'] = {
-        name = 'journal',
-      },
-      ['<leader>t'] = {
-        name = 'todo',
-      },
+    wk.add({
+      { '<leader>g', group = 'git' },
+      { '<leader>j', group = 'journal' },
+      { '<leader>l', group = 'lsp' },
+      { '<leader>t', group = 'todo' },
     })
   end,
 }
