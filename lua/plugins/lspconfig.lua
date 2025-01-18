@@ -43,16 +43,20 @@ return {
       capabilities = lsp_capabilities,
     })
 
-    lspconfig.bashls.setup({
-      on_attach = lsp_on_attach,
-      capabilities = lsp_capabilities,
-    })
+    if vim.fn.executable('bash-language-server') == 1 then
+      lspconfig.bashls.setup({
+        on_attach = lsp_on_attach,
+        capabilities = lsp_capabilities,
+      })
+    end
 
-    lspconfig.denols.setup({
-      on_attach = lsp_on_attach,
-      capabilities = lsp_capabilities,
-      filetypes = { 'markdown' },
-    })
+    if vim.fn.executable('deno') == 1 then
+      lspconfig.denols.setup({
+        on_attach = lsp_on_attach,
+        capabilities = lsp_capabilities,
+        filetypes = { 'markdown' },
+      })
+    end
 
     lspconfig.gopls.setup({
       on_attach = lsp_on_attach,
