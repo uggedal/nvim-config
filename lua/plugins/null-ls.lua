@@ -12,6 +12,8 @@ return {
 
       null_ls.builtins.formatting.shfmt,
 
+      null_ls.builtins.formatting.yamlfmt,
+
       null_ls.builtins.formatting.gofmt,
     }
 
