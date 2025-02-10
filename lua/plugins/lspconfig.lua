@@ -63,29 +63,31 @@ return {
       capabilities = lsp_capabilities,
     })
 
-    lspconfig.lua_ls.setup({
-      on_attach = lsp_on_attach,
-      capabilities = lsp_capabilities,
-      settings = {
-        Lua = {
-          runtime = {
-            version = 'LuaJIT',
-          },
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file('', true),
-            checkThirdParty = false,
-          },
-          telemetry = {
-            enable = false,
-          },
-          format = {
-            enable = false,
+    if vim.fn.executable('lua-language-server') == 1 then
+      lspconfig.lua_ls.setup({
+        on_attach = lsp_on_attach,
+        capabilities = lsp_capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+            format = {
+              enable = false,
+            },
           },
         },
-      },
-    })
+      })
+    end
   end,
 }
