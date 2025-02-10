@@ -2,6 +2,7 @@ return {
   'nvimtools/none-ls.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'gbprod/none-ls-shellcheck.nvim',
   },
   event = 'BufReadPre',
   config = function()
@@ -10,6 +11,8 @@ return {
     local null_ls_sources = {
       null_ls.builtins.formatting.stylua,
 
+      require('none-ls-shellcheck.diagnostics'),
+      require('none-ls-shellcheck.code_actions'),
       null_ls.builtins.formatting.shfmt,
 
       null_ls.builtins.formatting.yamlfmt,
