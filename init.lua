@@ -4,7 +4,13 @@ local mini_path = path_package .. 'pack/deps/start/mini.nvim'
 
 if not vim.loop.fs_stat(mini_path) then
   vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = { 'git', 'clone', '--filter=blob:none', 'https://github.com/echasnovski/mini.nvim', mini_path }
+  local clone_cmd = {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/echasnovski/mini.nvim',
+    mini_path,
+  }
   vim.fn.system(clone_cmd)
   vim.cmd('packadd mini.nvim | helptags ALL')
   vim.cmd('echo "Installed `mini.nvim`" | redraw')
@@ -52,7 +58,11 @@ end)
 later(function()
   add({
     source = 'nvim-treesitter/nvim-treesitter',
-    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+    hooks = {
+      post_checkout = function()
+        vim.cmd('TSUpdate')
+      end,
+    },
   })
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
@@ -109,7 +119,7 @@ later(function()
     depends = {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp',
-    }
+    },
   })
 
   local cmp = require('cmp')
@@ -144,15 +154,15 @@ later(function()
     sources = cmp.config.sources({
       { name = 'path' },
       { name = 'nvim_lsp' },
-    })
+    }),
   })
 end)
 
 later(function()
   local build_fzf_native = function(args)
-    vim.cmd("lcd " .. args.path)
-		vim.cmd("!make -s")
-		vim.cmd("lcd -")
+    vim.cmd('lcd ' .. args.path)
+    vim.cmd('!make -s')
+    vim.cmd('lcd -')
   end
 
   add({
@@ -164,78 +174,43 @@ later(function()
         hooks = {
           post_install = build_fzf_native,
           post_checkout = build_fzf_native,
-        }
-      }
-    }
+        },
+      },
+    },
   })
 
-  vim.keymap.set(
-    'n',
-    '<c-p>',
-    function()
-      require('telescope.builtin').find_files({
-        find_command = {
-          'rg',
-          '--color',
-          'never',
-          '--files',
-          '--ignore',
-          '--hidden',
-          '-g',
-          '!.git',
-        },
-      })
-    end,
-    { desc = 'find files' }
-  )
-  vim.keymap.set(
-    'n',
-    '<c-g>',
-    function()
-      require('telescope.builtin').live_grep()
-    end,
-    { desc = 'grep files' }
-  )
-  vim.keymap.set(
-    'n',
-    'gr',
-    function()
-      require('telescope.builtin').lsp_references({ jump_type = 'never' })
-    end,
-    { desc = 'lsp references' }
-  )
-  vim.keymap.set(
-    'n',
-    '<leader>gl',
-    function()
-      require('telescope.builtin').git_bcommits()
-    end,
-    { desc = 'git buffer commits' }
-  )
-  vim.keymap.set(
-    'n',
-    '<leader>gL',
-    function()
-      require('telescope.builtin').git_commits()
-    end,
-    { desc = 'git commits' }
-  )
-  vim.keymap.set(
-    'n',
-    '<leader>gB',
-    function()
-      require('telescope.builtin').git_branches()
-    end,
-    { desc = 'git branches' }
-  )
-  vim.keymap.set(
-    'n',
-    '<leader>gs',
-    function()
-      require('telescope.builtin').git_status()
-    end,
-    { desc = 'git status' }
-  )
+  vim.keymap.set('n', '<c-p>', function()
+    require('telescope.builtin').find_files({
+      find_command = {
+        'rg',
+        '--color',
+        'never',
+        '--files',
+        '--ignore',
+        '--hidden',
+        '-g',
+        '!.git',
+      },
+    })
+  end, { desc = 'find files' })
+  vim.keymap.set('n', '<c-g>', function()
+    require('telescope.builtin').live_grep()
+  end, { desc = 'grep files' })
+  vim.keymap.set('n', 'gr', function()
+    require('telescope.builtin').lsp_references({ jump_type = 'never' })
+  end, { desc = 'lsp references' })
+  vim.keymap.set('n', '<leader>gl', function()
+    require('telescope.builtin').git_bcommits()
+  end, { desc = 'git buffer commits' })
+  vim.keymap.set('n', '<leader>gL', function()
+    require('telescope.builtin').git_commits()
+  end, { desc = 'git commits' })
+  vim.keymap.set('n', '<leader>gB', function()
+    require('telescope.builtin').git_branches()
+  end, { desc = 'git branches' })
+  vim.keymap.set('n', '<leader>gs', function()
+    require('telescope.builtin').git_status()
+  end, { desc = 'git status' })
 
   local telescope = require('telescope')
 
@@ -274,7 +249,7 @@ later(function()
       { mode = 'x', keys = '<Leader>' },
       { mode = 'n', keys = 'g' },
       { mode = 'x', keys = 'g' },
-    }
+    },
   })
 end)
 
@@ -372,8 +347,8 @@ later(function()
     source = 'nvimtools/none-ls.nvim',
     depends = {
       'nvim-lua/plenary.nvim',
-      'gbprod/none-ls-shellcheck.nvim'
-    }
+      'gbprod/none-ls-shellcheck.nvim',
+    },
   })
 
   local null_ls = require('null-ls')
