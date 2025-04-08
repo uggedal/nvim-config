@@ -277,3 +277,14 @@ later(function()
 
   telescope.load_extension('fzf')
 end)
+
+later(function()
+  require('mini.clue').setup({
+    triggers = {
+      { mode = 'n', keys = '<Leader>' },
+      { mode = 'x', keys = '<Leader>' },
+      { mode = 'n', keys = 'g' },
+      { mode = 'x', keys = 'g' },
+    }
+  })
+end)
