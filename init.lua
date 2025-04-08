@@ -32,7 +32,7 @@ now(function()
     show_icons = false,
   })
 
-  add('ethanholz/nvim-lastplace')
+  require('mini.misc').setup_restore_cursor()
 end)
 
 now(function()
