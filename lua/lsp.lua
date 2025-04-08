@@ -33,12 +33,6 @@ return {
     )
     vim.keymap.set(
       'n',
-      '<leader>lr',
-      vim.lsp.buf.rename,
-      { desc = 'lsp rename', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'n',
       '<leader>lc',
       vim.lsp.buf.code_action,
       { desc = 'lsp code action', buffer = bufnr }
