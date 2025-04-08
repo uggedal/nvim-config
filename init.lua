@@ -288,3 +288,34 @@ later(function()
     }
   })
 end)
+
+later(function()
+  add('lewis6991/gitsigns.nvim')
+
+  local gitsigns = require('gitsigns')
+
+  gitsigns.setup({
+    signcolumn = false,
+    numhl = true,
+    on_attach = function(bufnr)
+      vim.keymap.set(
+        'n',
+        '<leader>gb',
+        gitsigns.blame_line,
+        { desc = 'git blame', buffer = bufnr }
+      )
+      vim.keymap.set(
+        'n',
+        '[h',
+        gitsigns.prev_hunk,
+        { desc = 'previous git diff hunk', buffer = bufnr }
+      )
+      vim.keymap.set(
+        'n',
+        ']h',
+        gitsigns.next_hunk,
+        { desc = 'next git diff hunk', buffer = bufnr }
+      )
+    end,
+  })
+end)
