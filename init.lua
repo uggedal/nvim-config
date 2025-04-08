@@ -42,13 +42,6 @@ end)
 -- later(function() require('mini.surround').setup() end)
 
 now(function()
-  -- Use other plugins with `add()`. It ensures plugin is available in current
-  -- session (installs if absent)
-  -- add({
-  --   source = 'neovim/nvim-lspconfig',
-  --   -- Supply dependencies near target plugin
-  --   depends = { 'williamboman/mason.nvim' },
-  -- })
   add('ethanholz/nvim-lastplace')
 end)
 
@@ -313,5 +306,99 @@ later(function()
         { desc = 'next git diff hunk', buffer = bufnr }
       )
     end,
+  })
+end)
+
+later(function()
+  local lsp_format = function(bufnr)
+    vim.lsp.buf.format({
+      bufnr = bufnr,
+    })
+  end
+
+  local lsp_format_augroup = vim.api.nvim_create_augroup('LspFormat', {})
+
+  lsp_on_attach = function(client, bufnr)
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({
+        group = lsp_format_augroup,
+        buffer = bufnr,
+      })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          lsp_format(bufnr)
+        end,
+        group = lsp_format_augroup,
+        buffer = bufnr,
+      })
+    end
+
+    -- Disable semantic tokens. Too slow and interferes with treesitter styles:
+    client.server_capabilities.semanticTokensProvider = nil
+
+    vim.keymap.set(
+      'n',
+      'gd',
+      vim.lsp.buf.definition,
+      { desc = 'lsp definition', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>lr',
+      vim.lsp.buf.rename,
+      { desc = 'lsp rename', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>lc',
+      vim.lsp.buf.code_action,
+      { desc = 'lsp code action', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'x',
+      '<leader>lc',
+      vim.lsp.buf.code_action,
+      { desc = 'lsp code action', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      'K',
+      vim.lsp.buf.hover,
+      { desc = 'lsp symbol info', buffer = bufnr }
+    )
+  end
+
+  add({
+    source = 'nvimtools/none-ls.nvim',
+    depends = {
+      'nvim-lua/plenary.nvim',
+      'gbprod/none-ls-shellcheck.nvim'
+    }
+  })
+
+  local null_ls = require('null-ls')
+
+  local null_ls_sources = {
+    null_ls.builtins.formatting.stylua,
+
+    require('none-ls-shellcheck.diagnostics'),
+    require('none-ls-shellcheck.code_actions'),
+    null_ls.builtins.formatting.shfmt,
+  }
+
+  local null_ls_lsp_on_attach = function(client, bufnr)
+    lsp_on_attach(client, bufnr)
+
+    vim.keymap.set('n', '<leader>ln', ':NullLsInfo<cr>', {
+      desc = 'null-ls info',
+      buffer = bufnr,
+      silent = true,
+    })
+  end
+
+  null_ls.setup({
+    sources = null_ls_sources,
+    border = 'single',
+    on_attach = null_ls_lsp_on_attach,
   })
 end)
