@@ -99,4 +99,7 @@ vim.diagnostic.config({
     border = 'rounded',
     style = 'minimal',
   },
+  jump = {
+    float = true,
+  },
 })
