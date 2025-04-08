@@ -284,7 +284,7 @@ later(function()
   })
 end)
 
-later(function()
+now(function()
   local lsp_format = function(bufnr)
     vim.lsp.buf.format({
       bufnr = bufnr,
@@ -293,7 +293,7 @@ later(function()
 
   local lsp_format_augroup = vim.api.nvim_create_augroup('LspFormat', {})
 
-  lsp_on_attach = function(client, bufnr)
+  on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then
       vim.api.nvim_clear_autocmds({
         group = lsp_format_augroup,
@@ -361,19 +361,35 @@ later(function()
     null_ls.builtins.formatting.shfmt,
   }
 
-  local null_ls_lsp_on_attach = function(client, bufnr)
-    lsp_on_attach(client, bufnr)
-
-    vim.keymap.set('n', '<leader>ln', ':NullLsInfo<cr>', {
-      desc = 'null-ls info',
-      buffer = bufnr,
-      silent = true,
-    })
-  end
-
   null_ls.setup({
     sources = null_ls_sources,
     border = 'single',
-    on_attach = null_ls_lsp_on_attach,
+    on_attach = on_attach,
   })
+
+  add('hrsh7th/cmp-nvim-lsp')
+
+  local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  vim.lsp.config('*', {
+    on_attach = on_attach,
+    capabilities = cmp_capabilities,
+  })
+
+  vim.lsp.config.pylsp = {
+    cmd = { 'pylsp' },
+    root_markers = { 'pyproject.toml' },
+    filetypes = { 'python' },
+  }
+
+  vim.lsp.config.denols = {
+    cmd = { 'deno', 'lsp' },
+    filetypes = { 'markdown' },
+  }
+
+  vim.lsp.enable('pylsp')
+
+  if vim.fn.executable('deno') == 1 then
+    vim.lsp.enable('denols')
+  end
 end)
