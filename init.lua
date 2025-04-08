@@ -49,15 +49,11 @@ now(function()
   --   -- Supply dependencies near target plugin
   --   depends = { 'williamboman/mason.nvim' },
   -- })
-  add({
-    source = 'ethanholz/nvim-lastplace'
-  })
+  add('ethanholz/nvim-lastplace')
 end)
 
 later(function()
-  add({
-    source = 'jghauser/mkdir.nvim'
-  })
+  add('jghauser/mkdir.nvim')
 end)
 
 later(function()
