@@ -33,18 +33,6 @@ return {
     )
     vim.keymap.set(
       'n',
-      '<leader>lc',
-      vim.lsp.buf.code_action,
-      { desc = 'lsp code action', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'x',
-      '<leader>lc',
-      vim.lsp.buf.code_action,
-      { desc = 'lsp code action', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'n',
       'K',
       vim.lsp.buf.hover,
       { desc = 'lsp symbol info', buffer = bufnr }
