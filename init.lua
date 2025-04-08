@@ -1,4 +1,3 @@
--- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
 local path_package = vim.fn.stdpath('data') .. '/site/'
 local mini_path = path_package .. 'pack/deps/start/mini.nvim'
 
@@ -16,39 +15,134 @@ if not vim.loop.fs_stat(mini_path) then
   vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
 
--- Set up 'mini.deps' (customize to your liking)
 require('mini.deps').setup({ path = { package = path_package } })
 
--- Use 'mini.deps'. `now()` and `later()` are helpers for a safe two-stage
--- startup and are optional.
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
--- Safely execute immediately
 now(function()
   require('gh')
   vim.o.background = 'light'
   vim.cmd('colorscheme gh')
-end)
-now(function()
+
   require('settings')
   require('languages')
   require('keymaps')
-end)
 
-now(function()
   require('mini.tabline').setup({
     show_icons = false,
   })
+
+  add('ethanholz/nvim-lastplace')
 end)
 
--- Safely execute later
--- later(function() require('mini.ai').setup() end)
--- later(function() require('mini.comment').setup() end)
--- later(function() require('mini.pick').setup() end)
--- later(function() require('mini.surround').setup() end)
-
 now(function()
-  add('ethanholz/nvim-lastplace')
+  local lsp_format = function(bufnr)
+    vim.lsp.buf.format({
+      bufnr = bufnr,
+    })
+  end
+
+  local lsp_format_augroup = vim.api.nvim_create_augroup('LspFormat', {})
+
+  on_attach = function(client, bufnr)
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({
+        group = lsp_format_augroup,
+        buffer = bufnr,
+      })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          lsp_format(bufnr)
+        end,
+        group = lsp_format_augroup,
+        buffer = bufnr,
+      })
+    end
+
+    -- Disable semantic tokens. Too slow and interferes with treesitter styles:
+    client.server_capabilities.semanticTokensProvider = nil
+
+    vim.keymap.set(
+      'n',
+      'gd',
+      vim.lsp.buf.definition,
+      { desc = 'lsp definition', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>lr',
+      vim.lsp.buf.rename,
+      { desc = 'lsp rename', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>lc',
+      vim.lsp.buf.code_action,
+      { desc = 'lsp code action', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'x',
+      '<leader>lc',
+      vim.lsp.buf.code_action,
+      { desc = 'lsp code action', buffer = bufnr }
+    )
+    vim.keymap.set(
+      'n',
+      'K',
+      vim.lsp.buf.hover,
+      { desc = 'lsp symbol info', buffer = bufnr }
+    )
+  end
+
+  add({
+    source = 'nvimtools/none-ls.nvim',
+    depends = {
+      'nvim-lua/plenary.nvim',
+      'gbprod/none-ls-shellcheck.nvim',
+    },
+  })
+
+  local null_ls = require('null-ls')
+
+  local null_ls_sources = {
+    null_ls.builtins.formatting.stylua,
+
+    require('none-ls-shellcheck.diagnostics'),
+    require('none-ls-shellcheck.code_actions'),
+    null_ls.builtins.formatting.shfmt,
+  }
+
+  null_ls.setup({
+    sources = null_ls_sources,
+    border = 'single',
+    on_attach = on_attach,
+  })
+
+  add('hrsh7th/cmp-nvim-lsp')
+
+  local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  vim.lsp.config('*', {
+    on_attach = on_attach,
+    capabilities = cmp_capabilities,
+  })
+
+  vim.lsp.config.pylsp = {
+    cmd = { 'pylsp' },
+    root_markers = { 'pyproject.toml' },
+    filetypes = { 'python' },
+  }
+
+  vim.lsp.config.denols = {
+    cmd = { 'deno', 'lsp' },
+    filetypes = { 'markdown' },
+  }
+
+  vim.lsp.enable('pylsp')
+
+  if vim.fn.executable('deno') == 1 then
+    vim.lsp.enable('denols')
+  end
 end)
 
 later(function()
@@ -282,114 +376,4 @@ later(function()
       )
     end,
   })
-end)
-
-now(function()
-  local lsp_format = function(bufnr)
-    vim.lsp.buf.format({
-      bufnr = bufnr,
-    })
-  end
-
-  local lsp_format_augroup = vim.api.nvim_create_augroup('LspFormat', {})
-
-  on_attach = function(client, bufnr)
-    if client.supports_method('textDocument/formatting') then
-      vim.api.nvim_clear_autocmds({
-        group = lsp_format_augroup,
-        buffer = bufnr,
-      })
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = function()
-          lsp_format(bufnr)
-        end,
-        group = lsp_format_augroup,
-        buffer = bufnr,
-      })
-    end
-
-    -- Disable semantic tokens. Too slow and interferes with treesitter styles:
-    client.server_capabilities.semanticTokensProvider = nil
-
-    vim.keymap.set(
-      'n',
-      'gd',
-      vim.lsp.buf.definition,
-      { desc = 'lsp definition', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'n',
-      '<leader>lr',
-      vim.lsp.buf.rename,
-      { desc = 'lsp rename', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'n',
-      '<leader>lc',
-      vim.lsp.buf.code_action,
-      { desc = 'lsp code action', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'x',
-      '<leader>lc',
-      vim.lsp.buf.code_action,
-      { desc = 'lsp code action', buffer = bufnr }
-    )
-    vim.keymap.set(
-      'n',
-      'K',
-      vim.lsp.buf.hover,
-      { desc = 'lsp symbol info', buffer = bufnr }
-    )
-  end
-
-  add({
-    source = 'nvimtools/none-ls.nvim',
-    depends = {
-      'nvim-lua/plenary.nvim',
-      'gbprod/none-ls-shellcheck.nvim',
-    },
-  })
-
-  local null_ls = require('null-ls')
-
-  local null_ls_sources = {
-    null_ls.builtins.formatting.stylua,
-
-    require('none-ls-shellcheck.diagnostics'),
-    require('none-ls-shellcheck.code_actions'),
-    null_ls.builtins.formatting.shfmt,
-  }
-
-  null_ls.setup({
-    sources = null_ls_sources,
-    border = 'single',
-    on_attach = on_attach,
-  })
-
-  add('hrsh7th/cmp-nvim-lsp')
-
-  local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  vim.lsp.config('*', {
-    on_attach = on_attach,
-    capabilities = cmp_capabilities,
-  })
-
-  vim.lsp.config.pylsp = {
-    cmd = { 'pylsp' },
-    root_markers = { 'pyproject.toml' },
-    filetypes = { 'python' },
-  }
-
-  vim.lsp.config.denols = {
-    cmd = { 'deno', 'lsp' },
-    filetypes = { 'markdown' },
-  }
-
-  vim.lsp.enable('pylsp')
-
-  if vim.fn.executable('deno') == 1 then
-    vim.lsp.enable('denols')
-  end
 end)
