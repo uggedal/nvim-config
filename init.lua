@@ -127,3 +127,122 @@ later(function()
     })
   })
 end)
+
+later(function()
+  local build_fzf_native = function(args)
+    vim.cmd("lcd " .. args.path)
+		vim.cmd("!make -s")
+		vim.cmd("lcd -")
+  end
+
+  add({
+    source = 'nvim-telescope/telescope.nvim',
+    depends = {
+      'nvim-lua/plenary.nvim',
+      {
+        source = 'nvim-telescope/telescope-fzf-native.nvim',
+        hooks = {
+          post_install = build_fzf_native,
+          post_checkout = build_fzf_native,
+        }
+      }
+    }
+  })
+
+  vim.keymap.set(
+    'n',
+    '<c-p>',
+    function()
+      require('telescope.builtin').find_files({
+        find_command = {
+          'rg',
+          '--color',
+          'never',
+          '--files',
+          '--ignore',
+          '--hidden',
+          '-g',
+          '!.git',
+        },
+      })
+    end,
+    { desc = 'find files' }
+  )
+  vim.keymap.set(
+    'n',
+    '<c-g>',
+    function()
+      require('telescope.builtin').live_grep()
+    end,
+    { desc = 'grep files' }
+  )
+  vim.keymap.set(
+    'n',
+    'gr',
+    function()
+      require('telescope.builtin').lsp_references({ jump_type = 'never' })
+    end,
+    { desc = 'lsp references' }
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>gl',
+    function()
+      require('telescope.builtin').git_bcommits()
+    end,
+    { desc = 'git buffer commits' }
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>gL',
+    function()
+      require('telescope.builtin').git_commits()
+    end,
+    { desc = 'git commits' }
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>gB',
+    function()
+      require('telescope.builtin').git_branches()
+    end,
+    { desc = 'git branches' }
+  )
+  vim.keymap.set(
+    'n',
+    '<leader>gs',
+    function()
+      require('telescope.builtin').git_status()
+    end,
+    { desc = 'git status' }
+  )
+
+  local telescope = require('telescope')
+
+  telescope.setup({
+    defaults = {
+      mappings = {
+        i = {
+          ['<C-s>'] = 'cycle_history_next',
+          ['<C-r>'] = 'cycle_history_prev',
+        },
+      },
+      vimgrep_arguments = {
+        'rg',
+        '--color',
+        'never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--ignore',
+        '--hidden',
+        '-g',
+        '!.git',
+      },
+    },
+  })
+
+  telescope.load_extension('fzf')
+end)
