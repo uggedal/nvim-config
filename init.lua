@@ -58,19 +58,50 @@ later(function()
   add({
     source = 'jghauser/mkdir.nvim'
   })
-  -- add({
-  --   source = 'nvim-treesitter/nvim-treesitter',
-  --   -- Use 'master' while monitoring updates in 'main'
-  --   checkout = 'master',
-  --   monitor = 'main',
-  --   -- Perform action after every checkout
-  --   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
-  -- })
-  -- Possible to immediately execute code which depends on the added plugin
-  -- require('nvim-treesitter.configs').setup({
-  --   ensure_installed = { 'lua', 'vimdoc' },
-  --   highlight = { enable = true },
-  -- })
+end)
+
+later(function()
+  add({
+    source = 'nvim-treesitter/nvim-treesitter',
+    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+  })
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = {
+      'bash',
+      'c',
+      'css',
+      'comment',
+      'diff',
+      'git_rebase',
+      'gitattributes',
+      'gitcommit',
+      'git_config',
+      'gitignore',
+      'go',
+      'gomod',
+      'gosum',
+      'html',
+      'javascript',
+      'json',
+      'lua',
+      'make',
+      'markdown',
+      'markdown_inline',
+      'powershell',
+      'python',
+      'query',
+      'regex',
+      'rust',
+      'sql',
+      'terraform',
+      'toml',
+      'vim',
+      'vimdoc',
+      'yaml',
+    },
+    highlight = { enable = true },
+    indent = { enable = true },
+  })
 end)
 
 later(function()
