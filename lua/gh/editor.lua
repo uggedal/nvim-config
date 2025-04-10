@@ -71,4 +71,6 @@ return {
   DiagnosticWarn = { fg = c.brown_1 },
   DiagnosticInfo = { fg = c.blue_1 },
   DiagnosticHint = { fg = c.green_1 },
+
+  FloatBorder = { fg = c.bg_2 },
 }
