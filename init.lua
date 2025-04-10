@@ -50,10 +50,6 @@ now(function()
 
   local null_ls_sources = {
     null_ls.builtins.formatting.stylua,
-
-    require('none-ls-shellcheck.diagnostics'),
-    require('none-ls-shellcheck.code_actions'),
-    null_ls.builtins.formatting.shfmt,
   }
 
   null_ls.setup({
@@ -72,12 +68,19 @@ now(function()
     filetypes = { 'python' },
   }
 
+  vim.lsp.config.bashls = {
+    cmd = { 'bash-language-server', 'start' },
+    root_markers = { 'pyproject.toml' },
+    filetypes = { 'bash', 'sh' },
+  }
+
   vim.lsp.config.denols = {
     cmd = { 'deno', 'lsp' },
     filetypes = { 'markdown' },
   }
 
   vim.lsp.enable('pylsp')
+  vim.lsp.enable('bashls')
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
