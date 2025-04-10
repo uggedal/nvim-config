@@ -46,7 +46,7 @@ vim.o.mouse = ''
 
 -- Highlight the line of the cursor only in insert mode:
 local toggle_cursorline_group =
-  vim.api.nvim_create_augroup('ToggleCursorLine', {})
+    vim.api.nvim_create_augroup('ToggleCursorLine', {})
 vim.api.nvim_create_autocmd('InsertLeave', {
   callback = function()
     vim.opt.cursorline = false
