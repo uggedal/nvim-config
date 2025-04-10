@@ -15,11 +15,10 @@ if not vim.loop.fs_stat(mini_path) then
   vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
 
-require('mini.deps').setup({ path = { package = path_package } })
+local deps = require('mini.deps')
+deps.setup({ path = { package = path_package } })
 
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-
-now(function()
+deps.now(function()
   require('gh')
   vim.o.background = 'light'
   vim.cmd('colorscheme gh')
@@ -35,7 +34,7 @@ now(function()
   require('mini.misc').setup_restore_cursor()
 end)
 
-now(function()
+deps.now(function()
   vim.lsp.config('*', {
     on_attach = require('lsp').on_attach,
   })
@@ -82,19 +81,19 @@ now(function()
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable({'pylsp', 'bashls', 'luals'})
+  vim.lsp.enable({ 'pylsp', 'bashls', 'luals' })
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
   end
 end)
 
-later(function()
-  add('jghauser/mkdir.nvim')
+deps.later(function()
+  deps.add('jghauser/mkdir.nvim')
 end)
 
-later(function()
-  add({
+deps.later(function()
+  deps.add({
     source = 'nvim-treesitter/nvim-treesitter',
     hooks = {
       post_checkout = function()
@@ -141,7 +140,7 @@ later(function()
   })
 end)
 
-later(function()
+deps.later(function()
   local pick = require('mini.pick')
   local extra = require('mini.extra')
 
@@ -177,7 +176,7 @@ later(function()
   )
 end)
 
-later(function()
+deps.later(function()
   require('mini.clue').setup({
     triggers = {
       { mode = 'n', keys = '<Leader>' },
@@ -188,8 +187,8 @@ later(function()
   })
 end)
 
-later(function()
-  add('lewis6991/gitsigns.nvim')
+deps.later(function()
+  deps.add('lewis6991/gitsigns.nvim')
 
   local gitsigns = require('gitsigns')
 
