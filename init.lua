@@ -72,6 +72,16 @@ deps.now(function()
             [vim.fn.stdpath('config') .. '/lua'] = true,
           },
         },
+        format = {
+          enable = true,
+          defaultConfig = {
+            indent_style = 'space',
+            indent_size = '2',
+            quote_style = 'single',
+            max_line_length = '79',
+            trailing_table_separator = 'smart',
+          },
+        },
       },
     },
   }
