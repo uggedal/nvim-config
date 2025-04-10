@@ -6,9 +6,6 @@ for _, k in ipairs({ 'up', 'down', 'left', 'right' }) do
   map('i', '<' .. k .. '>', '<nop>')
 end
 
--- Disable man page lookup of word under cursor with K key:
-map('n', 'K', '<nop>')
-
 -- Disable tab cycling keys (use buffers):
 map('n', 'gT', '<nop>')
 map('n', 'gt', '<nop>')
