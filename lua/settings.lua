@@ -103,3 +103,6 @@ vim.diagnostic.config({
     float = true,
   },
 })
+
+-- Floating window border (for diagnostic and others):
+vim.o.winborder = 'single'
