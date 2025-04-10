@@ -67,6 +67,10 @@ return {
   DiffNewFile = { fg = c.green_1 },
   DiffLine = { fg = c.purple_1 },
 
+  Added = { link = 'DiffAdd' },
+  Changed = { link = 'DiffChange' },
+  Removed = { link = 'DiffDelete' },
+
   DiagnosticError = { fg = c.red_1 },
   DiagnosticWarn = { fg = c.brown_1 },
   DiagnosticInfo = { fg = c.blue_1 },
