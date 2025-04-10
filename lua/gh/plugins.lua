@@ -1,9 +1,8 @@
 local c = require('gh.colors')
 return {
-  -- Telescope
-  TelescopeBorder = { fg = c.bg_2 },
-  TelescopeMatching = { fg = c.red_1 },
-  TelescopePromptPrefix = { fg = c.fg_1 },
+  -- Mini pick
+  MiniPickMatchCurrent = { bg = c.yellow_bg_1 },
+  MiniPickMatchRanges = { fg = c.red_1 },
 
   -- Gitsigns
   GitSignsAddNr = { bg = c.green_bg },
