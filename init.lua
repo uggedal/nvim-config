@@ -36,30 +36,8 @@ now(function()
 end)
 
 now(function()
-  on_attach = require('lsp').on_attach
-
-  add({
-    source = 'nvimtools/none-ls.nvim',
-    depends = {
-      'nvim-lua/plenary.nvim',
-      'gbprod/none-ls-shellcheck.nvim',
-    },
-  })
-
-  local null_ls = require('null-ls')
-
-  local null_ls_sources = {
-    null_ls.builtins.formatting.stylua,
-  }
-
-  null_ls.setup({
-    sources = null_ls_sources,
-    border = 'single',
-    on_attach = on_attach,
-  })
-
   vim.lsp.config('*', {
-    on_attach = on_attach,
+    on_attach = require('lsp').on_attach,
   })
 
   vim.lsp.config.pylsp = {
@@ -74,13 +52,37 @@ now(function()
     filetypes = { 'bash', 'sh' },
   }
 
+  vim.lsp.config.luals = {
+    cmd = { vim.fn.expand('~/.local/lib/luals/bin/lua-language-server') },
+    root_markers = { 'pyproject.toml' },
+    filetypes = { 'lua' },
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          globals = { 'vim' },
+          neededFileStatus = {
+            ['codestyle-check'] = 'Any',
+          },
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.stdpath('config') .. '/lua'] = true,
+          },
+        },
+      },
+    },
+  }
+
   vim.lsp.config.denols = {
     cmd = { 'deno', 'lsp' },
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable('pylsp')
-  vim.lsp.enable('bashls')
+  vim.lsp.enable({'pylsp', 'bashls', 'luals'})
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
