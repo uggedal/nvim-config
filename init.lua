@@ -52,6 +52,12 @@ deps.now(function()
     filetypes = { 'bash', 'sh' },
   }
 
+  vim.lsp.config.rust_analyzer = {
+    cmd = { 'rust-analyzer' },
+    root_markers = { 'Cargo.toml' },
+    filetypes = { 'rust' },
+  }
+
   vim.lsp.config.luals = {
     cmd = { vim.fn.expand('~/.local/lib/luals/bin/lua-language-server') },
     root_markers = { 'pyproject.toml' },
@@ -92,7 +98,7 @@ deps.now(function()
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable({ 'pylsp', 'bashls', 'luals' })
+  vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'luals' })
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
