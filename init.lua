@@ -37,6 +37,7 @@ end)
 deps.now(function()
   vim.lsp.config('*', {
     on_attach = require('lsp').on_attach,
+    root_markers = { '.git' },
   })
 
   vim.lsp.config.pylsp = {
