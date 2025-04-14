@@ -146,6 +146,7 @@ deps.later(function()
       'query',
       'regex',
       'rust',
+      'scfg',
       'sql',
       'terraform',
       'toml',
