@@ -49,7 +49,7 @@ deps.now(function()
   vim.lsp.config.bashls = {
     cmd = { 'bash-language-server', 'start' },
     root_markers = { 'pyproject.toml' },
-    filetypes = { 'bash', 'sh' },
+    filetypes = { 'bash', 'zsh', 'sh' },
   }
 
   vim.lsp.config.rust_analyzer = {
