@@ -133,6 +133,7 @@ deps.later(function()
       'go',
       'gomod',
       'gosum',
+      'gotmpl',
       'html',
       'javascript',
       'json',
