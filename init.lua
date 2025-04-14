@@ -52,12 +52,6 @@ deps.now(function()
     filetypes = { 'bash', 'zsh', 'sh' },
   }
 
-  vim.lsp.config.rust_analyzer = {
-    cmd = { 'rust-analyzer' },
-    root_markers = { 'Cargo.toml' },
-    filetypes = { 'rust' },
-  }
-
   vim.lsp.config.gopls = {
     cmd = { 'gopls' },
     root_markers = { 'go.mod' },
@@ -104,7 +98,7 @@ deps.now(function()
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'gopls', 'luals' })
+  vim.lsp.enable({ 'pylsp', 'bashls', 'gopls', 'luals' })
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
