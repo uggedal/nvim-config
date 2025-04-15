@@ -59,7 +59,7 @@ deps.now(function()
   }
 
   vim.lsp.config.luals = {
-    cmd = { vim.fn.expand('~/.local/lib/luals/bin/lua-language-server') },
+    cmd = { 'lua-language-server' },
     root_markers = { 'pyproject.toml' },
     filetypes = { 'lua' },
     settings = {
