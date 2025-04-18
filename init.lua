@@ -55,7 +55,7 @@ deps.now(function()
   vim.lsp.config.gopls = {
     cmd = { 'gopls' },
     root_markers = { 'go.mod' },
-    filetypes = { 'go' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
     settings = {
       gopls = {
         gofumpt = true,
