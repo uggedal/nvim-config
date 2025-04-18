@@ -56,6 +56,11 @@ deps.now(function()
     cmd = { 'gopls' },
     root_markers = { 'go.mod' },
     filetypes = { 'go' },
+    settings = {
+      gopls = {
+        gofumpt = true,
+      },
+    },
   }
 
   vim.lsp.config.luals = {
