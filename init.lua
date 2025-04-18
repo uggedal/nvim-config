@@ -63,6 +63,20 @@ deps.now(function()
     },
   }
 
+  vim.lsp.config.golangci = {
+    cmd = { 'golangci-lint-langserver' },
+    root_markers = { 'go.mod' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    init_options = {
+      command = {
+        'golangci-lint',
+        'run',
+        '--output.json.path=stdout',
+        '--show-stats=false',
+      },
+    },
+  }
+
   vim.lsp.config.luals = {
     cmd = { 'lua-language-server' },
     root_markers = { 'pyproject.toml' },
@@ -103,7 +117,7 @@ deps.now(function()
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable({ 'pylsp', 'bashls', 'gopls', 'luals' })
+  vim.lsp.enable({ 'pylsp', 'bashls', 'gopls', 'golangci', 'luals' })
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
