@@ -32,6 +32,9 @@ vim.o.inccommand = 'split'
 --   3. Complete next full match. After last match, use original string.
 vim.o.wildmode = 'longest,list,full'
 
+-- Disable visual selection of completion above command line:
+vim.o.wildmenu = false
+
 -- Keep some lines above and below cursor:
 vim.o.scrolloff = 3
 
