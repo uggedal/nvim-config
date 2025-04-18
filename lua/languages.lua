@@ -49,3 +49,10 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('MarkdownConceal', {}),
   pattern = { 'markdown' },
 })
+
+-- Add scfg file type (it has treesitter syntax):
+vim.filetype.add({
+  extension = {
+    scfg = 'scfg',
+  },
+})
