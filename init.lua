@@ -41,7 +41,7 @@ deps.now(function()
   })
 
   vim.lsp.config.pylsp = {
-    cmd = { 'pylsp' },
+    cmd = { 'uv', 'run', 'pylsp' },
     root_markers = { 'pyproject.toml' },
     filetypes = { 'python' },
   }
