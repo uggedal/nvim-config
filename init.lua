@@ -123,7 +123,11 @@ deps.now(function()
     filetypes = { 'markdown' },
   }
 
-  vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'gopls', 'luals' })
+  vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'luals' })
+
+  if vim.fn.executable('gopls') == 1 then
+    vim.lsp.enable('gopls')
+  end
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
