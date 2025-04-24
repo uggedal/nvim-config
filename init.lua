@@ -123,6 +123,11 @@ deps.now(function()
     filetypes = { 'markdown' },
   }
 
+  vim.lsp.config.taplo = {
+    cmd = { 'taplo', 'lsp', 'stdio' },
+    filetypes = { 'toml' },
+  }
+
   vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'luals' })
 
   if vim.fn.executable('gopls') == 1 then
@@ -131,6 +136,10 @@ deps.now(function()
 
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
+  end
+
+  if vim.fn.executable('taplo') == 1 then
+    vim.lsp.enable('taplo')
   end
 end)
 
