@@ -56,6 +56,14 @@ deps.now(function()
     cmd = { 'rust-analyzer' },
     root_markers = { 'Cargo.toml' },
     filetypes = { 'rust' },
+    settings = {
+      ['rust-analyzer'] = {
+        checkOnSave = {
+          enable = true,
+          command = 'clippy',
+        },
+      },
+    },
   }
 
   vim.lsp.config.gopls = {
