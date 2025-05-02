@@ -199,6 +199,7 @@ deps.later(function()
       'vim',
       'vimdoc',
       'yaml',
+      'zig',
     },
     highlight = { enable = true },
     indent = { enable = true },
