@@ -146,6 +146,10 @@ deps.now(function()
     vim.lsp.enable('gopls')
   end
 
+  if vim.fn.executable('golangci-lint-langserver') == 1 then
+    vim.lsp.enable('golangci')
+  end
+
   if vim.fn.executable('deno') == 1 then
     vim.lsp.enable('denols')
   end
