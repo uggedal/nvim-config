@@ -126,12 +126,6 @@ deps.now(function()
     },
   }
 
-  vim.lsp.config.zls = {
-    cmd = { 'zls' },
-    filetypes = { 'zig', 'zir' },
-    root_markers = { 'build.zig' },
-  }
-
   vim.lsp.config.denols = {
     cmd = { 'deno', 'lsp' },
     filetypes = { 'markdown' },
@@ -142,7 +136,11 @@ deps.now(function()
     filetypes = { 'toml' },
   }
 
-  vim.lsp.enable({ 'pylsp', 'bashls', 'rust_analyzer', 'luals', 'zls' })
+  vim.lsp.enable({ 'pylsp', 'bashls', 'luals' })
+
+  if vim.fn.executable('rust-analyzer') == 1 then
+    vim.lsp.enable('rust_analyzer')
+  end
 
   if vim.fn.executable('gopls') == 1 then
     vim.lsp.enable('gopls')
