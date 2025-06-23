@@ -163,65 +163,53 @@ deps.later(function()
   deps.add('jghauser/mkdir.nvim')
 end)
 
-deps.now(function()
+deps.later(function()
   deps.add({
     source = 'nvim-treesitter/nvim-treesitter',
-    checkout = "main",  -- master branch has been archived
     hooks = {
       post_checkout = function()
         vim.cmd('TSUpdate')
       end,
     },
   })
-  local ts_parsers = {
-    'bash',
-    'c',
-    'css',
-    'comment',
-    'diff',
-    'git_rebase',
-    'gitattributes',
-    'gitcommit',
-    'git_config',
-    'gitignore',
-    'go',
-    'gomod',
-    'gosum',
-    'gotmpl',
-    'html',
-    'javascript',
-    'json',
-    'lua',
-    'make',
-    'markdown',
-    'markdown_inline',
-    'powershell',
-    'python',
-    'query',
-    'regex',
-    'rust',
-    'sql',
-    'terraform',
-    'toml',
-    'vim',
-    'vimdoc',
-    'yaml',
-    'zig',
-  }
-  require('nvim-treesitter').install(ts_parsers)
-  local ts_patterns = {}
-  for _, parser in ipairs(ts_parsers) do
-    ts_patterns = vim.tbl_extend("keep", ts_patterns, vim.treesitter.language.get_filetypes(parser))
-  end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
-    pattern = ts_patterns,
-    callback = function()
-      vim.treesitter.start()
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-    end,
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = {
+      'bash',
+      'c',
+      'css',
+      'comment',
+      'diff',
+      'git_rebase',
+      'gitattributes',
+      'gitcommit',
+      'git_config',
+      'gitignore',
+      'go',
+      'gomod',
+      'gosum',
+      'gotmpl',
+      'html',
+      'javascript',
+      'json',
+      'lua',
+      'make',
+      'markdown',
+      'markdown_inline',
+      'powershell',
+      'python',
+      'query',
+      'regex',
+      'rust',
+      'sql',
+      'terraform',
+      'toml',
+      'vim',
+      'vimdoc',
+      'yaml',
+      'zig',
+    },
+    highlight = { enable = true },
+    indent = { enable = true },
   })
 end)
 
