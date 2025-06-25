@@ -163,53 +163,65 @@ deps.later(function()
   deps.add('jghauser/mkdir.nvim')
 end)
 
-deps.later(function()
+deps.now(function()
+  local ts_parsers = {
+    'bash',
+    'c',
+    'css',
+    'comment',
+    'diff',
+    'git_rebase',
+    'gitattributes',
+    'gitcommit',
+    'git_config',
+    'gitignore',
+    'go',
+    'gomod',
+    'gosum',
+    'gotmpl',
+    'html',
+    'javascript',
+    'json',
+    'lua',
+    'make',
+    'markdown',
+    'markdown_inline',
+    'powershell',
+    'python',
+    'query',
+    'regex',
+    'rust',
+    'sql',
+    'terraform',
+    'toml',
+    'vim',
+    'vimdoc',
+    'yaml',
+    'zig',
+  }
+  local install_ts_parsers = function(args)
+    -- See https://github.com/echasnovski/mini.nvim/discussions/1831
+    vim.cmd('packadd ' .. args.name)
+    require('nvim-treesitter').install(ts_parsers):wait()
+    require('nvim-treesitter').update():wait()
+  end
+
   deps.add({
     source = 'nvim-treesitter/nvim-treesitter',
+    checkout = 'main', -- master branch has been archived
     hooks = {
-      post_checkout = function()
-        vim.cmd('TSUpdate')
-      end,
+      post_install = install_ts_parsers,
+      post_checkout = install_ts_parsers,
     },
   })
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = {
-      'bash',
-      'c',
-      'css',
-      'comment',
-      'diff',
-      'git_rebase',
-      'gitattributes',
-      'gitcommit',
-      'git_config',
-      'gitignore',
-      'go',
-      'gomod',
-      'gosum',
-      'gotmpl',
-      'html',
-      'javascript',
-      'json',
-      'lua',
-      'make',
-      'markdown',
-      'markdown_inline',
-      'powershell',
-      'python',
-      'query',
-      'regex',
-      'rust',
-      'sql',
-      'terraform',
-      'toml',
-      'vim',
-      'vimdoc',
-      'yaml',
-      'zig',
-    },
-    highlight = { enable = true },
-    indent = { enable = true },
+  vim.api.nvim_create_autocmd('FileType', {
+    callback = function()
+      vim.treesitter.start()
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+    end,
+    group = vim.api.nvim_create_augroup('TSSetup', {}),
+    pattern = '*',
   })
 end)
 
