@@ -219,6 +219,10 @@ deps.now(function()
       local filetype = event.match
       local lang = vim.treesitter.language.get_lang(filetype)
 
+      if not lang then
+        return
+      end
+
       if not vim.tbl_contains(require('nvim-treesitter.config').get_available(), lang) then
         return
       end
