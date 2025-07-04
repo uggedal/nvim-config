@@ -215,8 +215,15 @@ deps.now(function()
     },
   })
   vim.api.nvim_create_autocmd('FileType', {
-    callback = function()
-      pcall(vim.treesitter.start)
+    callback = function(event)
+      local filetype = event.match
+      local lang = vim.treesitter.language.get_lang(filetype)
+
+      if not vim.tbl_contains(require('nvim-treesitter.config').get_available(), lang) then
+        return
+      end
+
+      vim.treesitter.start()
       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
     end,
